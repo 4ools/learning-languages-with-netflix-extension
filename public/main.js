@@ -1,15 +1,31 @@
 const electron = require('electron');
 // Module to control application life.
 const app = electron.app;
-// Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow;
+
+const {BrowserWindow, Menu, ipcMain} = electron;
 
 const path = require('path');
 const url = require('url');
 
+const uploadEvent = 'openUploads'
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+
+const menu = Menu.buildFromTemplate([
+  {
+      label: 'File',
+      submenu: [
+          {
+            label: 'Upload',
+            click() {
+              ipcMain.send(uploadEvent, {})
+            }
+          }
+      ]
+  }
+])
 
 function createWindow() {
     // Create the browser window.
@@ -17,6 +33,21 @@ function createWindow() {
 
     // and load the index.html of the app.
     mainWindow.loadURL('http://localhost:3000');
+
+    Menu.setApplicationMenu(menu); 
+
+    ipcMain.on(uploadEvent, () => {
+      mainWindow.loadURL(
+          url.format(
+            {
+              pathname: path.join(__dirname, '/public/upload.html'),
+              protocol: 'file',
+              slashes: true
+            }
+          )
+    )
+    })
+
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools();
