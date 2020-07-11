@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.1.2",
     "concurrently": "^5.2.0",
     "electron": "^9.1.0",
+    "fontsource-roboto": "^2.1.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
