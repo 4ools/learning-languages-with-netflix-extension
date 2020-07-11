@@ -6,10 +6,10 @@ import { Typography } from '@material-ui/core'
 
 const FlashCardPage = () => (
   <>
-    <Typography variant="h3" component="h2">
+    <Typography variant="h3" component="h2" style={{ marginBottom: 20 }}>
       Welcome to the flash cards.
     </Typography>
-    <Typography variant="body1">
+    <Typography variant="body1" style={{ marginBottom: 30 }}>
       Click on a card when you think you know the answer!
     </Typography>
     <Grid container spacing={3}>
@@ -17,7 +17,7 @@ const FlashCardPage = () => (
         .filter((item) => item.word && item.wordDefinition)
         .map((item, index) => (
           <Grid item sm={12} md={3} key={`flash-card-grid-item-${index}`}>
-            <FlashCard word={item.word} answer={item.wordDefinition} />
+            <FlashCard item={item} />
           </Grid>
         ))}
     </Grid>
