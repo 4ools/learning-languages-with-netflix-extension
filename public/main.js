@@ -1,9 +1,9 @@
-const electron = require('electron')
 // Module to control application life.
-const app = electron.app
 const isMac = process.platform === 'darwin'
+const fs = require('fs')
+const path = require('path')
 
-const { BrowserWindow, Menu } = electron
+const { BrowserWindow, Menu, app, dialog } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -34,7 +34,8 @@ const menu = Menu.buildFromTemplate([
       {
         label: 'Upload',
         click() {
-          mainWindow.webContents.send('openUploads', {})
+          // mainWindow.webContents.send('openUploads', {})
+          openFile()
         },
       },
     ],
@@ -73,7 +74,7 @@ const menu = Menu.buildFromTemplate([
 function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 900,
+    width: 1200,
     height: 900,
     webPreferences: {
       nodeIntegration: true,
@@ -121,5 +122,35 @@ app.on('activate', function () {
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+function openFile() {
+  // open the modal asking for the JSON
+  const files = dialog.showOpenDialogSync(mainWindow, {
+    title: 'Upload JSON file from extension',
+    filters: [
+      {
+        name: 'JSON',
+        extensions: ['json'],
+      },
+    ],
+    properties: ['openFile'],
+  })
+
+  // if they pick anything just leave
+  if (!files) {
+    return
+  }
+  // get the path of the first file
+  const file = files[0]
+
+  // read the contents of the file using fs
+  const fileContent = fs.readFileSync(file)
+
+  const fileName = `card-data-${Date.now()}.json`
+
+  fs.writeFileSync(
+    path.join(__dirname, '..', 'src/data', fileName),
+    fileContent
+  )
+
+  // @TODO tell the front end to re-render the items in the menu
+}

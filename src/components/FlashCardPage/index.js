@@ -7,7 +7,7 @@ import { Typography } from '@material-ui/core'
 const FlashCardPage = () => (
   <>
     <Typography variant="h3" component="h2" style={{ marginBottom: 20 }}>
-      Welcome to the flash cards.
+      Flash cards.
     </Typography>
     <Typography variant="body1" style={{ marginBottom: 30 }}>
       Click on a card when you think you know the answer!
