@@ -152,5 +152,6 @@ function openFile() {
     fileContent
   )
 
-  // @TODO tell the front end to re-render the items in the menu
+  // tell the front end to re-render the items in the menu
+  mainWindow.webContents.send('reloadCards', {})
 }

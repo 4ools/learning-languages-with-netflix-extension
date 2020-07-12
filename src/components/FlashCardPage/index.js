@@ -4,11 +4,9 @@ import * as savedItems from '../../data/sample.json'
 import Grid from '@material-ui/core/Grid'
 import { Typography } from '@material-ui/core'
 
-const FlashCardPage = () => (
+// @TODO pass the cards to page as some sort of page props
+const FlashCardPage = ({ cards }) => (
   <>
-    <Typography variant="h3" component="h2" style={{ marginBottom: 20 }}>
-      Flash cards.
-    </Typography>
     <Typography variant="body1" style={{ marginBottom: 30 }}>
       Click on a card when you think you know the answer!
     </Typography>
