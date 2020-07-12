@@ -1,26 +1,69 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
+const isMac = process.platform === 'darwin'
 
-const { BrowserWindow, Menu, ipcMain } = electron
-
-const path = require('path')
-const url = require('url')
-
-const uploadEvent = 'openUploads'
+const { BrowserWindow, Menu } = electron
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 const menu = Menu.buildFromTemplate([
+  ...(isMac
+    ? [
+        {
+          label: app.name,
+          submenu: [
+            { role: 'about' },
+            { type: 'separator' },
+            { role: 'services' },
+            { type: 'separator' },
+            { role: 'hide' },
+            { role: 'hideothers' },
+            { role: 'unhide' },
+            { type: 'separator' },
+            { role: 'quit' },
+          ],
+        },
+      ]
+    : []),
   {
     label: 'File',
     submenu: [
       {
         label: 'Upload',
         click() {
-          ipcMain.send(uploadEvent, {})
+          mainWindow.webContents.send('openUploads', {})
+        },
+      },
+    ],
+  },
+  // @TODO just for dev
+  {
+    label: 'View',
+    submenu: [
+      {
+        label: 'Reload',
+        accelerator: 'F5',
+        click: (item, focusedWindow) => {
+          if (focusedWindow) {
+            // on reload, start fresh and close any old
+            // open secondary windows
+            if (focusedWindow.id === 1) {
+              BrowserWindow.getAllWindows().forEach((win) => {
+                if (win.id > 1) win.close()
+                win.reload()
+              })
+            }
+          }
+        },
+      },
+      {
+        label: 'Toggle Dev Tools',
+        accelerator: 'F12',
+        click: () => {
+          mainWindow.webContents.toggleDevTools()
         },
       },
     ],
@@ -29,25 +72,23 @@ const menu = Menu.buildFromTemplate([
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 600 })
+  mainWindow = new BrowserWindow({
+    width: 900,
+    height: 900,
+    webPreferences: {
+      nodeIntegration: true,
+      preload: __dirname + '/preload.js',
+    },
+  })
 
   // and load the index.html of the app.
+  // @TODO just for dev
   mainWindow.loadURL('http://localhost:3000')
 
   Menu.setApplicationMenu(menu)
 
-  ipcMain.on(uploadEvent, () => {
-    mainWindow.loadURL(
-      url.format({
-        pathname: path.join(__dirname, '/public/upload.html'),
-        protocol: 'file',
-        slashes: true,
-      })
-    )
-  })
-
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
