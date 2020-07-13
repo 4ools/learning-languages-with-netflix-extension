@@ -1,7 +1,10 @@
 // Module to control application life.
 const isMac = process.platform === 'darwin'
-const fs = require('fs')
 const path = require('path')
+const { promisify } = require('util')
+const fs = require('fs')
+const readdir = promisify(fs.readdir)
+const stat = promisify(fs.stat)
 
 const { BrowserWindow, Menu, app, dialog } = require('electron')
 
@@ -98,6 +101,8 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  readFiles()
 }
 
 // This method will be called when Electron has finished
@@ -145,13 +150,41 @@ function openFile() {
   // read the contents of the file using fs
   const fileContent = fs.readFileSync(file)
 
+  // @TODO date of the first item in the list
   const fileName = `card-data-${Date.now()}.json`
 
-  fs.writeFileSync(
-    path.join(__dirname, '..', 'src/data', fileName),
-    fileContent
-  )
+  const dataDir = path.join(__dirname, '..', 'src/data')
+
+  fs.writeFileSync(path.join(dataDir, fileName), fileContent)
+
+  // grab all the files in data
+  // convert to {name, contents} structure
+  // send it to the front end
+  getFiles(dataDir)
+    .then((files) => console.log(files))
+    .catch((e) => console.error(e))
 
   // tell the front end to re-render the items in the menu
   mainWindow.webContents.send('reloadCards', {})
+}
+
+function readFiles() {
+  const dataDir = path.join(__dirname, '..', 'src/data')
+  getFiles(dataDir)
+    .then((files) => {
+      console.log('we are in here')
+      console.log(files)
+    })
+    .catch((e) => console.error(e))
+}
+
+async function getFiles(dir) {
+  const subdirs = await readdir(dir)
+  const files = await Promise.all(
+    subdirs.map(async (subdir) => {
+      const res = path.resolve(dir, subdir)
+      return (await stat(res)).isDirectory() ? getFiles(res) : res
+    })
+  )
+  return files.reduce((a, f) => a.concat(f), [])
 }
