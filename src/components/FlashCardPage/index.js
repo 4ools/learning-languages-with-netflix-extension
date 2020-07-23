@@ -7,6 +7,9 @@ import getFlashCardFiles from './flashCardsFiles'
 
 const FlashCardPage = () => {
   useEffect(() => {
+    if (window.ipcRenderer) {
+      console.log('we have the ipc renderer')
+    }
     // we do not have this in the browser version
     window.ipcRenderer &&
       window.ipcRenderer.on(

@@ -8,9 +8,18 @@ const stat = promisify(fs.stat)
 
 const { BrowserWindow, Menu, app, dialog } = require('electron')
 
+// console.log(__dirname)
+
+// reload on changes
+require('electron-reload')(__dirname, {
+  electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
+})
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
+const isProd = process.env.NODE_ENV === 'production'
 
 const menu = Menu.buildFromTemplate([
   ...(isMac
@@ -43,32 +52,35 @@ const menu = Menu.buildFromTemplate([
       },
     ],
   },
-  // @TODO just for dev
-  {
-    label: 'View',
-    submenu: [
-      {
-        label: 'Reload',
-        accelerator: 'F5',
-        click: (_, focusedWindow) => {
-          if (focusedWindow) {
-            // on reload, start fresh and close any old
-            // open secondary windows
-            if (focusedWindow.id === 1) {
-              reloadWindow()
-            }
-          }
+  ...(isProd
+    ? []
+    : [
+        {
+          label: 'View',
+          submenu: [
+            {
+              label: 'Reload',
+              accelerator: 'F5',
+              click: (_, focusedWindow) => {
+                if (focusedWindow) {
+                  // on reload, start fresh and close any old
+                  // open secondary windows
+                  if (focusedWindow.id === 1) {
+                    reloadWindow()
+                  }
+                }
+              },
+            },
+            {
+              label: 'Toggle Dev Tools',
+              accelerator: 'F12',
+              click: () => {
+                mainWindow.webContents.toggleDevTools()
+              },
+            },
+          ],
         },
-      },
-      {
-        label: 'Toggle Dev Tools',
-        accelerator: 'F12',
-        click: () => {
-          mainWindow.webContents.toggleDevTools()
-        },
-      },
-    ],
-  },
+      ]),
 ])
 
 async function createWindow() {
@@ -83,11 +95,12 @@ async function createWindow() {
   })
 
   // and load the index.html of the app.
-  // @TODO just for dev
+  // @TODO just for dev using isProd
   mainWindow.loadURL('http://localhost:3000').then(async () => {
     console.log('we have loaded the site')
     // we need to tell the client what json files to load in
     const cardFiles = await flashCardFiles()
+    console.log('the cards we are about to send are ', cardFiles)
     mainWindow.webContents.send('flashCardFiles', cardFiles)
   })
 
