@@ -97,12 +97,14 @@ async function createWindow() {
   // and load the index.html of the app.
   // @TODO just for dev using isProd
   mainWindow.loadURL('http://localhost:3000').then(async () => {
-    console.log('we have loaded the site')
     // we need to tell the client what json files to load in
     const cardFiles = await flashCardFiles()
-    console.log('the cards we are about to send are ', cardFiles)
     mainWindow.webContents.send('flashCardFiles', cardFiles)
   })
+
+  if (!isProd) {
+    mainWindow.webContents.toggleDevTools()
+  }
 
   Menu.setApplicationMenu(menu)
 

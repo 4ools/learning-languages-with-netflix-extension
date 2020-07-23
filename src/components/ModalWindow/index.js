@@ -6,7 +6,6 @@ const ModalWindow = ({ open, children }) => {
   const [isOpen, setOpen] = useState(false)
 
   useEffect(() => {
-    console.log('open changed')
     setOpen(open)
   }, [open])
 

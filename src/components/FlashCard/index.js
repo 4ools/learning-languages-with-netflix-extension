@@ -8,7 +8,11 @@ const highlightedContext = (item) => {
     const splitRegex = new RegExp(`(${item.word})`)
     return contextLine
       .split(splitRegex)
-      .map((part) => (part === item.word ? <strong>{part}</strong> : part))
+      .map((part, index) => (
+        <React.Fragment key={`sub-title-${item.word}-${index}`}>
+          {part === item.word ? <strong>{part}</strong> : part}{' '}
+        </React.Fragment>
+      ))
   })
 }
 

@@ -1,40 +1,24 @@
-import React, { useEffect } from 'react'
-import FlashCard from '../FlashCard'
-import * as savedItems from '../../data/sample.json'
+import React from 'react'
+import FlashCardDeck from '../FlashCardDeck'
 import Grid from '@material-ui/core/Grid'
 import { Typography } from '@material-ui/core'
-import getFlashCardFiles from './flashCardsFiles'
+import useCardDecks from './useCardDecks'
 
 const FlashCardPage = () => {
-  useEffect(() => {
-    if (window.ipcRenderer) {
-      console.log('we have the ipc renderer')
-    }
-    // we do not have this in the browser version
-    window.ipcRenderer &&
-      window.ipcRenderer.on(
-        'flashCardFiles',
-        (cards) => {
-          console.log('we have the cards!')
-          console.log(cards)
-        }
-        // getFlashCardFiles(cards)
-      )
-  }, [])
+  // we will get the decks of cards here.
+  // the decks will change if new ones are uploaded
+  // they are just the items in the file system
+  const decks = useCardDecks()
 
   return (
     <>
       <Typography variant="body1" style={{ marginBottom: 30 }}>
-        Click on a card when you think you know the answer!
+        Click a card if you think you know the answer
       </Typography>
       <Grid container spacing={3}>
-        {savedItems.default
-          .filter((item) => item.word && item.wordDefinition)
-          .map((item, index) => (
-            <Grid item sm={12} md={3} key={`flash-card-grid-item-${index}`}>
-              <FlashCard item={item} />
-            </Grid>
-          ))}
+        {decks.map((cards, index) => (
+          <FlashCardDeck key={`flash-card-deck-${index}`} cards={cards} />
+        ))}
       </Grid>
     </>
   )

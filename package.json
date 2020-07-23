@@ -24,7 +24,7 @@
     "react-test": "react-scripts test --env=jsdom",
     "react-eject": "react-scripts eject",
     "electron-start": "wait-on http://localhost:3000 && electron .",
-    "run-dev": "concurrently -n react-server,electron-app \"yarn react-start\" \"yarn electron-start\""
+    "run-dev": "concurrently -n react-server,electron-app -c blue,green \"yarn react-start\" \"yarn electron-start\""
   },
   "eslintConfig": {
     "extends": "react-app"
