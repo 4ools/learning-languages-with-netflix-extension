@@ -50,15 +50,12 @@ const menu = Menu.buildFromTemplate([
       {
         label: 'Reload',
         accelerator: 'F5',
-        click: (item, focusedWindow) => {
+        click: (_, focusedWindow) => {
           if (focusedWindow) {
             // on reload, start fresh and close any old
             // open secondary windows
             if (focusedWindow.id === 1) {
-              BrowserWindow.getAllWindows().forEach((win) => {
-                if (win.id > 1) win.close()
-                win.reload()
-              })
+              reloadWindow()
             }
           }
         },
@@ -74,7 +71,7 @@ const menu = Menu.buildFromTemplate([
   },
 ])
 
-function createWindow() {
+async function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 1200,
@@ -87,12 +84,14 @@ function createWindow() {
 
   // and load the index.html of the app.
   // @TODO just for dev
-  mainWindow.loadURL('http://localhost:3000')
+  mainWindow.loadURL('http://localhost:3000').then(async () => {
+    console.log('we have loaded the site')
+    // we need to tell the client what json files to load in
+    const cardFiles = await flashCardFiles()
+    mainWindow.webContents.send('flashCardFiles', cardFiles)
+  })
 
   Menu.setApplicationMenu(menu)
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -102,7 +101,7 @@ function createWindow() {
     mainWindow = null
   })
 
-  readFiles()
+  // readFiles()
 }
 
 // This method will be called when Electron has finished
@@ -127,14 +126,15 @@ app.on('activate', function () {
   }
 })
 
-function openFile() {
+async function openFile() {
   // open the modal asking for the JSON
   const files = dialog.showOpenDialogSync(mainWindow, {
     title: 'Upload JSON file from extension',
     filters: [
       {
         name: 'JSON',
-        extensions: ['json'],
+        // ndjson is the extension the plugin uses
+        extensions: ['json', 'ndjson'],
       },
     ],
     properties: ['openFile'],
@@ -160,22 +160,34 @@ function openFile() {
   // grab all the files in data
   // convert to {name, contents} structure
   // send it to the front end
-  getFiles(dataDir)
-    .then((files) => console.log(files))
-    .catch((e) => console.error(e))
+  // getFiles(dataDir)
+  //   .then((files) => console.log(files))
+  //   .catch((e) => console.error(e))
+
+  // do a hard reload of the front end, as it now needs to
+  // load in the json
+  // reloadWindow()
 
   // tell the front end to re-render the items in the menu
-  mainWindow.webContents.send('reloadCards', {})
+  mainWindow.webContents.send('flashCardFiles', await flashCardFiles())
 }
 
-function readFiles() {
+function reloadWindow() {
+  BrowserWindow.getAllWindows().forEach((win) => {
+    if (win.id > 1) win.close()
+    win.reload()
+  })
+}
+
+async function flashCardFiles() {
   const dataDir = path.join(__dirname, '..', 'src/data')
-  getFiles(dataDir)
-    .then((files) => {
-      console.log('we are in here')
-      console.log(files)
-    })
-    .catch((e) => console.error(e))
+  const files = await getFiles(dataDir)
+
+  // remove the full path and just return the filename
+  // for example /users/me/thing.json to just thing.json
+  return files.map((fileName) =>
+    fileName.substring(fileName.lastIndexOf('/') + 1, fileName.length)
+  )
 }
 
 async function getFiles(dir) {
