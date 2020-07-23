@@ -8,8 +8,6 @@ const stat = promisify(fs.stat)
 
 const { BrowserWindow, Menu, app, dialog } = require('electron')
 
-// console.log(__dirname)
-
 // reload on changes
 require('electron-reload')(__dirname, {
   electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
