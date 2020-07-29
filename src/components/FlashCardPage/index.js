@@ -17,7 +17,7 @@ const FlashCardPage = () => {
       </Typography>
       <Grid container spacing={3}>
         {decks.map((cards, index) => (
-          <FlashCardDeck key={`flash-card-deck-${index}`} cards={cards} />
+          <FlashCardDeck cards={cards} key={`flash-card-deck-${index}`} />
         ))}
       </Grid>
     </>
