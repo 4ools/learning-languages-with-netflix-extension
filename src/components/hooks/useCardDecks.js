@@ -22,7 +22,10 @@ const useCardDecks = () => {
         return
       }
       // push the new deck to the array
-      decks.current.push(data.default)
+      // get a name using the timestamp from the first item in the session
+      const date = new Date(data.default[0].timeCreated) || Date.now()
+
+      decks.current.push({ name: date.toDateString(), cards: data.default })
       // trigger a re-render
       // make sure to spread the state else it is considered
       // the same obj and will not re-render the new state

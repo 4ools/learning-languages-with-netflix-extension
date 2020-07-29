@@ -2,7 +2,7 @@ import React from 'react'
 import FlashCardDeck from '../FlashCardDeck'
 import Grid from '@material-ui/core/Grid'
 import { Typography } from '@material-ui/core'
-import useCardDecks from './useCardDecks'
+import useCardDecks from '../hooks/useCardDecks'
 
 const FlashCardPage = () => {
   // we will get the decks of cards here.
@@ -16,8 +16,8 @@ const FlashCardPage = () => {
         Click a card if you think you know the answer
       </Typography>
       <Grid container spacing={3}>
-        {decks.map((cards, index) => (
-          <FlashCardDeck cards={cards} key={`flash-card-deck-${index}`} />
+        {decks.map((deck, index) => (
+          <FlashCardDeck cards={deck.cards} key={`flash-card-deck-${index}`} />
         ))}
       </Grid>
     </>

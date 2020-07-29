@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import 'fontsource-roboto/latin-ext.css'
 import Container from '@material-ui/core/Container'
@@ -14,16 +14,13 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
 import MailIcon from '@material-ui/icons/Mail'
+import useCardDecks from '../hooks/useCardDecks'
 
 const Layout = ({ children }) => {
   const classes = useLayoutStyles()
-  const [cards, setCards] = useState([])
 
-  useEffect(() => {
-    // we do not have this in the browser version
-    window.ipcRenderer &&
-      window.ipcRenderer.on('openUploads', (cards) => setCards(cards))
-  }, [])
+  // this hook gives us all the files in the FS that have decks
+  const decks = useCardDecks()
 
   return (
     <main className={classes.root}>
@@ -48,12 +45,12 @@ const Layout = ({ children }) => {
             <ListItem>
               <Typography variant="h6">Flash cards</Typography>
             </ListItem>
-            {cards.map((card, index) => (
-              <ListItem button key={index}>
+            {decks.map((deck, index) => (
+              <ListItem button key={`card-deck-in-nav-${index}`}>
                 <ListItemIcon>
                   <MailIcon />
                 </ListItemIcon>
-                <ListItemText primary={card.name} />
+                <ListItemText primary={deck.name} />
               </ListItem>
             ))}
           </List>
