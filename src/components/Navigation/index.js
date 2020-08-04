@@ -7,6 +7,8 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
+import DeleteIcon from '@material-ui/icons/Delete'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import useCardDecks from '../hooks/useCardDecks'
@@ -36,31 +38,32 @@ const Navigation = () => {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            <ListItem>
-              <Typography variant="h6">Flash cards</Typography>
+            <ListItem button>
+              <ListItemIcon>
+                <FitnessCenterIcon />
+              </ListItemIcon>
+              <ListItemText primary="Practice" />
             </ListItem>
+          </List>
+          <Divider />
+          <List>
+            <ListItem>
+              <Typography variant="h6">Sessions</Typography>
+            </ListItem>
+          </List>
+          <Divider />
+          <List>
             {decks.map((deck, index) => (
               <ListItem button key={`card-deck-in-nav-${index}`}>
                 <ListItemIcon>
                   <CalendarTodayIcon />
                 </ListItemIcon>
                 <ListItemText primary={deck.name} />
+                <ListItemIcon>
+                  <DeleteIcon />
+                </ListItemIcon>
               </ListItem>
             ))}
-          </List>
-          <Divider />
-          <List>
-            <ListItem>
-              <Typography variant="h6">...</Typography>
-            </ListItem>
-            {/* {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))} */}
           </List>
         </div>
       </Drawer>
