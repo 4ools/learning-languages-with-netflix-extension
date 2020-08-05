@@ -67,9 +67,8 @@ const Navigation = () => {
                   <CalendarTodayIcon />
                 </ListItemIcon>
                 <ListItemText primary={deck.name} />
-                <ListItemIcon>
-                  <DeleteIcon />
-                </ListItemIcon>
+
+                <DeleteIcon />
               </ListItem>
             ))}
           </List>
