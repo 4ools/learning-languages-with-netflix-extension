@@ -68,7 +68,24 @@ const Navigation = () => {
                 </ListItemIcon>
                 <ListItemText primary={deck.name} />
 
-                <DeleteIcon />
+                <DeleteIcon
+                  onClick={(event) => {
+                    // stop the click loading cards
+                    event.stopPropagation()
+                    // ask the user if they are sure they would like to
+                    // remove the file
+                    const confirmed = window.confirm(
+                      'are you sure you want to remove the data?'
+                    )
+                    if (confirmed) {
+                      alert('alright homie')
+                      // @TODO here we tell electron to remove the file!
+                      // then we need to send the files signal again
+                      // this will trigger the useDecks hook and we should be
+                      // groovie
+                    }
+                  }}
+                />
               </ListItem>
             ))}
           </List>

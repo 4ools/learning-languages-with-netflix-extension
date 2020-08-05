@@ -9,6 +9,8 @@ const useFlashCardStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     cursor: 'pointer',
     textAlign: 'center',
+    color: (props) =>
+      props.shown ? theme.palette.common.white : theme.palette.text.primary,
     backgroundColor: (props) =>
       props.shown ? theme.palette.success.main : theme.palette.background.paper,
   },
