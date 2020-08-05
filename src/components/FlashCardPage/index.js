@@ -1,24 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import FlashCardDeck from '../FlashCardDeck'
 import Grid from '@material-ui/core/Grid'
 import { Typography } from '@material-ui/core'
-import useCardDecks from '../hooks/useCardDecks'
+import { CurrentDeckContext } from '../CurrentDeck'
 
 const FlashCardPage = () => {
-  // we will get the decks of cards here.
-  // the decks will change if new ones are uploaded
-  // they are just the items in the file system
-  const decks = useCardDecks()
+  const { deck } = useContext(CurrentDeckContext)
 
+  // there is no need to render anything unless a deck has been
+  // chosen
+  if (!deck) {
+    return null
+  }
+
+  const date = new Date(deck.cards[0].timeCreated) || Date.now()
   return (
     <>
-      <Typography variant="body1" style={{ marginBottom: 30 }}>
-        Click a card if you think you know the answer
+      <Typography variant="h5" style={{ marginBottom: 30, marginTop: 30 }}>
+        Card Deck: {date.toDateString()}
       </Typography>
       <Grid container spacing={3}>
-        {decks.map((deck, index) => (
-          <FlashCardDeck cards={deck.cards} key={`flash-card-deck-${index}`} />
-        ))}
+        <FlashCardDeck cards={deck.cards} />
       </Grid>
     </>
   )

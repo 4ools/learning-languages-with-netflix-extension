@@ -5,6 +5,7 @@ import useLayoutStyles from './styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import Theme from '../Theme'
 import Navigation from '../Navigation'
+import { CurrentDeckProvider } from '../CurrentDeck'
 
 const Layout = ({ children }) => {
   const classes = useLayoutStyles()
@@ -12,11 +13,13 @@ const Layout = ({ children }) => {
   return (
     <main className={classes.root}>
       <Theme>
-        <Navigation />
-        <Container maxwidth="sm">
-          <Toolbar />
-          {children}
-        </Container>
+        <CurrentDeckProvider>
+          <Navigation />
+          <Container maxwidth="sm">
+            <Toolbar />
+            {children}
+          </Container>
+        </CurrentDeckProvider>
       </Theme>
     </main>
   )

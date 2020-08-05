@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import List from '@material-ui/core/List'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -13,11 +13,13 @@ import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import useCardDecks from '../hooks/useCardDecks'
 import useNavigationStyles from './styles'
+import { CurrentDeckContext } from '../CurrentDeck'
 
 const Navigation = () => {
   // this hook gives us all the files in the FS that have decks
   const decks = useCardDecks()
   const classes = useNavigationStyles()
+  const currentDeckContext = useContext(CurrentDeckContext)
 
   return (
     <>
@@ -54,7 +56,13 @@ const Navigation = () => {
           <Divider />
           <List>
             {decks.map((deck, index) => (
-              <ListItem button key={`card-deck-in-nav-${index}`}>
+              <ListItem
+                button
+                key={`card-deck-in-nav-${index}`}
+                onClick={() => {
+                  currentDeckContext.setCurrentDeck(deck)
+                }}
+              >
                 <ListItemIcon>
                   <CalendarTodayIcon />
                 </ListItemIcon>

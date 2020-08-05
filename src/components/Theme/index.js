@@ -11,6 +11,21 @@ const Theme = ({ children }) => {
       createMuiTheme({
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
+          primary: {
+            main: '#ff006e',
+          },
+          secondary: {
+            main: '#8338ec',
+          },
+          success: {
+            main: '#3a86ff',
+          },
+          error: {
+            main: '#fb5607',
+          },
+          warning: {
+            main: '#ffbe0b',
+          },
         },
       }),
     [prefersDarkMode]

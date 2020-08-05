@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const useFlashCardStyles = makeStyles({
+const useFlashCardStyles = makeStyles((theme) => ({
   root: {
     padding: '20px',
     height: '300px',
@@ -9,8 +9,9 @@ const useFlashCardStyles = makeStyles({
     justifyContent: 'center',
     cursor: 'pointer',
     textAlign: 'center',
-    backgroundColor: (props) => (props.shown ? 'yellow' : 'white'),
+    backgroundColor: (props) =>
+      props.shown ? theme.palette.success.main : theme.palette.background.paper,
   },
-})
+}))
 
 export default useFlashCardStyles

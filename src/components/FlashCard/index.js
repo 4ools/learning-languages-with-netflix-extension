@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 import useFlashCardStyles from './sytles'
 import { Typography } from '@material-ui/core'
 
@@ -24,16 +25,18 @@ const FlashCard = ({ item }) => {
 
   return (
     <Card className={flashCardClassed.root} onClick={() => setShown(true)}>
-      {!shown ? (
-        <Typography variant="h6">{word}</Typography>
-      ) : (
-        <>
-          <Typography variant="h6" style={{ marginBottom: '20px' }}>
-            {wordDefinition}
-          </Typography>
-          <Typography variant="body2">{highlightedContext(item)}</Typography>
-        </>
-      )}
+      <CardContent>
+        {!shown ? (
+          <Typography variant="h6">{word}</Typography>
+        ) : (
+          <>
+            <Typography variant="h6" style={{ marginBottom: '20px' }}>
+              {wordDefinition}
+            </Typography>
+            <Typography variant="body2">{highlightedContext(item)}</Typography>
+          </>
+        )}
+      </CardContent>
     </Card>
   )
 }

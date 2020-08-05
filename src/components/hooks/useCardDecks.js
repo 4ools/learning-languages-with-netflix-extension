@@ -36,6 +36,9 @@ const useCardDecks = () => {
     // we do not have this in the browser version
     window.ipcRenderer &&
       window.ipcRenderer.on('flashCardFiles', updateDecksUsingFiles)
+
+    // remove this after testing
+    updateDecksUsingFiles(null, ['sample', 'another-one'])
   }, [])
 
   return renderDecks
