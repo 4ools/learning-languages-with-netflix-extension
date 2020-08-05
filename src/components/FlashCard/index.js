@@ -31,6 +31,8 @@ const FlashCard = ({ item }) => {
         ) : (
           <>
             <Typography variant="h6" style={{ marginBottom: '20px' }}>
+              {word}
+              {' = '}
               {wordDefinition}
             </Typography>
             <Typography variant="body2">{highlightedContext(item)}</Typography>
