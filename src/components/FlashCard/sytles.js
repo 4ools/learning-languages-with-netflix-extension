@@ -16,6 +16,23 @@ const useFlashCardStyles = makeStyles((theme) => ({
     backgroundColor: (props) =>
       props.shown ? theme.palette.success.main : theme.palette.background.paper,
   },
+  flipContainer: {
+    position: 'relative',
+  },
+  back: {
+    position: 'absolute',
+    willChange: 'transform, opacity',
+    left: 0,
+    right: 0,
+    zIndex: 2,
+  },
+  front: {
+    position: 'absolute',
+    willChange: 'transform, opacity',
+    left: 0,
+    right: 0,
+    zIndex: 1,
+  },
   content: {
     display: 'flex',
     flexDirection: 'column',
