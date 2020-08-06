@@ -19,7 +19,7 @@ const highlightedContext = (item) => {
   })
 }
 
-const FlashCard = ({ item }) => {
+const FlashCard = ({ item, onRate }) => {
   const [shown, setShown] = useState(false)
   const flashCardClassed = useFlashCardStyles({ shown })
 
@@ -51,7 +51,7 @@ const FlashCard = ({ item }) => {
                 How easy was that?
               </Typography>
             </Box>
-            <Rate />
+            <Rate action={onRate} />
           </Box>
         </CardActions>
       )}
