@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
 import useFlashCardStyles from './sytles'
-import { Typography } from '@material-ui/core'
+import Rate from '../Rate'
+import { Typography, Box } from '@material-ui/core'
 
 const highlightedContext = (item) => {
   return item.subtitleContext.subs.map((contextLine) => {
@@ -25,9 +27,11 @@ const FlashCard = ({ item }) => {
 
   return (
     <Card className={flashCardClassed.root} onClick={() => setShown(true)}>
-      <CardContent>
+      <CardContent className={flashCardClassed.content}>
         {!shown ? (
-          <Typography variant="h6">{word}</Typography>
+          <Box className={flashCardClassed.emptyCard}>
+            <Typography variant="h6">{word}</Typography>
+          </Box>
         ) : (
           <>
             <Typography variant="h6" style={{ marginBottom: '20px' }}>
@@ -39,6 +43,18 @@ const FlashCard = ({ item }) => {
           </>
         )}
       </CardContent>
+      {shown && (
+        <CardActions className={flashCardClassed.actionArea}>
+          <Box className={flashCardClassed.actionBox}>
+            <Box mb={1}>
+              <Typography variant="body2" className={flashCardClassed.rateText}>
+                How easy was that?
+              </Typography>
+            </Box>
+            <Rate />
+          </Box>
+        </CardActions>
+      )}
     </Card>
   )
 }

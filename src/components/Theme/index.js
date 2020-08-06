@@ -27,6 +27,7 @@ const Theme = ({ children }) => {
             main: '#ffbe0b',
           },
           success: {
+            light: 'hsla(265, 83%, 57%, 0.30)',
             main: '#8338ec',
           },
           error: {
