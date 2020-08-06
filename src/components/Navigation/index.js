@@ -7,6 +7,8 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Switch from '@material-ui/core/Switch'
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
 import DeleteIcon from '@material-ui/icons/Delete'
 import Drawer from '@material-ui/core/Drawer'
@@ -14,20 +16,38 @@ import AppBar from '@material-ui/core/AppBar'
 import useCardDecks from '../hooks/useCardDecks'
 import useNavigationStyles from './styles'
 import { CurrentDeckContext } from '../CurrentDeck'
+import { DarkModeContext } from '../Theme/DarkModeContext'
 
 const Navigation = () => {
   // this hook gives us all the files in the FS that have decks
   const decks = useCardDecks()
   const classes = useNavigationStyles()
   const currentDeckContext = useContext(CurrentDeckContext)
+  const { darkMode, setDarkMode } = useContext(DarkModeContext)
+
+  const currentMode = darkMode !== undefined ? Boolean(darkMode) : false
+  const toggleDarkMode = (event) => {
+    setDarkMode(event.target.checked)
+  }
 
   return (
     <>
       <AppBar position="fixed" style={{ zIndex: 3000 }}>
         <Toolbar>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className={classes.title}>
             LLN companion app
           </Typography>
+          <FormControlLabel
+            control={
+              <Switch
+                color="secondary"
+                checked={currentMode}
+                onChange={toggleDarkMode}
+                name="DarkMode"
+              />
+            }
+            label="Dark Mode"
+          />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -42,7 +62,7 @@ const Navigation = () => {
           <List>
             <ListItem button>
               <ListItemIcon>
-                <FitnessCenterIcon />
+                <FitnessCenterIcon color="secondary" />
               </ListItemIcon>
               <ListItemText primary="Practice" />
             </ListItem>
@@ -64,11 +84,12 @@ const Navigation = () => {
                 }}
               >
                 <ListItemIcon>
-                  <CalendarTodayIcon />
+                  <CalendarTodayIcon color="secondary" />
                 </ListItemIcon>
                 <ListItemText primary={deck.name} />
 
                 <DeleteIcon
+                  color="error"
                   onClick={(event) => {
                     // stop the click loading cards
                     event.stopPropagation()

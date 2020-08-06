@@ -6,21 +6,24 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Theme from '../Theme'
 import Navigation from '../Navigation'
 import { CurrentDeckProvider } from '../CurrentDeck'
+import { DarkModeProvider } from '../Theme/DarkModeContext'
 
 const Layout = ({ children }) => {
   const classes = useLayoutStyles()
 
   return (
     <main className={classes.root}>
-      <Theme>
-        <CurrentDeckProvider>
-          <Navigation />
-          <Container maxwidth="sm">
-            <Toolbar />
-            {children}
-          </Container>
-        </CurrentDeckProvider>
-      </Theme>
+      <DarkModeProvider>
+        <Theme>
+          <CurrentDeckProvider>
+            <Navigation />
+            <Container maxwidth="sm">
+              <Toolbar />
+              {children}
+            </Container>
+          </CurrentDeckProvider>
+        </Theme>
+      </DarkModeProvider>
     </main>
   )
 }
