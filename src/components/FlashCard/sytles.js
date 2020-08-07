@@ -14,7 +14,11 @@ const useFlashCardStyles = makeStyles((theme) => ({
     color: (props) =>
       props.shown ? theme.palette.common.white : theme.palette.text.primary,
     backgroundColor: (props) =>
-      props.shown ? theme.palette.success.main : theme.palette.background.paper,
+      props.shown
+        ? theme.palette.type === 'dark'
+          ? theme.palette.success.main
+          : theme.palette.primary.main
+        : theme.palette.background.paper,
   },
   flipContainer: {
     position: 'relative',
@@ -47,7 +51,10 @@ const useFlashCardStyles = makeStyles((theme) => ({
     flex: 1,
   },
   actionArea: {
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.secondary.main
+        : theme.palette.common.white,
     margin: '0 -20px -20px -20px',
   },
   actionBox: {
@@ -58,7 +65,10 @@ const useFlashCardStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   rateText: {
-    color: theme.palette.success.main,
+    color:
+      theme.palette.type === 'dark'
+        ? theme.palette.success.main
+        : theme.palette.primary.main,
   },
 }))
 

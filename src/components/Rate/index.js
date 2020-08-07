@@ -7,15 +7,18 @@ import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltO
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
 import { withStyles } from '@material-ui/core/styles'
 
-const StyledRating = withStyles(({ palette, spacing }) => ({
+const StyledRating = withStyles(({ palette }) => ({
   iconFilled: {
-    color: palette.success.main,
+    color:
+      palette.type === 'dark' ? palette.success.main : palette.primary.main,
   },
   iconHover: {
-    color: palette.success.main,
+    color:
+      palette.type === 'dark' ? palette.success.main : palette.primary.main,
   },
   iconEmpty: {
-    color: palette.success.light,
+    color:
+      palette.type === 'dark' ? palette.success.light : palette.primary.light,
   },
 }))(Rating)
 
@@ -47,14 +50,14 @@ const IconContainer = (props) => {
   return <span {...other}>{customIcons[value].icon}</span>
 }
 
-const Rate = ({ action, item }) => (
+const Rate = ({ action, name }) => (
   <StyledRating
-    name={`customized-icons-${item.timeCreated}`}
+    name={name}
     size="large"
     defaultValue={3}
     getLabelText={(value) => customIcons[value].label}
     IconContainerComponent={IconContainer}
-    onChange={() => action()}
+    onChange={(value) => action(value)}
   />
 )
 

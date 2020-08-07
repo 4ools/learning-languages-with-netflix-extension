@@ -21,6 +21,7 @@ const Theme = ({ children }) => {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           primary: {
+            light: 'hsla(217, 100%, 61%, 0.30)',
             main: '#3a86ff',
           },
           secondary: {

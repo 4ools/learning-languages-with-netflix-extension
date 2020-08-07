@@ -64,7 +64,10 @@ const FlashCard = ({ item, onRate }) => {
                   How easy was that?
                 </Typography>
               </Box>
-              <Rate action={onRate} item={item} />
+              <Rate
+                action={onRate}
+                name={`customized-icons-${item.timeCreated}`}
+              />
             </Box>
           </CardActions>
         </Card>
@@ -75,7 +78,7 @@ const FlashCard = ({ item, onRate }) => {
       >
         <Card className={flashCardClassed.root}>
           <Box className={flashCardClassed.emptyCard}>
-            <Typography variant="h6">{word}</Typography>
+            <Typography variant="h5">{word}</Typography>
           </Box>
         </Card>
       </a.div>

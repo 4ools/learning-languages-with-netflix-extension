@@ -15,7 +15,11 @@ const FlashCardDeck = ({ cards }) => {
       <Grid item sm={12} md={6} lg={4} key={`flash-card-${item.timeCreated}`}>
         <FlashCard
           item={item}
-          onRate={() => {
+          onRate={(rating) => {
+            // @TODO
+            // tell main to store this word and how hard it was
+
+            // remove the card from the list
             setCurrentCards([...currentCards.filter((card) => card !== item)])
           }}
         />

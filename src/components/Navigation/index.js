@@ -32,7 +32,12 @@ const Navigation = () => {
 
   return (
     <>
-      <AppBar position="fixed" style={{ zIndex: 3000 }}>
+      <AppBar
+        // @TODO come back to this shit
+        color={currentMode ? 'inherit' : 'primary'}
+        position="fixed"
+        style={{ zIndex: 3000 }}
+      >
         <Toolbar>
           <Typography variant="h6" noWrap className={classes.title}>
             LLN companion app

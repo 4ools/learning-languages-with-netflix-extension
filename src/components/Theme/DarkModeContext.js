@@ -8,7 +8,10 @@ const DarkModeProvider = ({ children }) => {
   const [cookies, setCookie] = useCookies([DARK_MODE_COOKIE])
   // read a cookie and set the initial value based on the cookie
   // state for users to set dark mode and read it
-  const [darkMode, setDarkMode] = useState(cookies[DARK_MODE_COOKIE])
+  const cookieSetting = cookies[DARK_MODE_COOKIE]
+    ? JSON.parse(cookies[DARK_MODE_COOKIE])
+    : undefined
+  const [darkMode, setDarkMode] = useState(cookieSetting)
 
   const setTheCookie = (newValue) => {
     if (typeof newValue !== 'boolean') {
@@ -17,6 +20,8 @@ const DarkModeProvider = ({ children }) => {
     }
     setDarkMode(newValue)
     setCookie(DARK_MODE_COOKIE, newValue)
+    // @TODO tell electron to store the new cookie value if in electron
+    // if (window.)
   }
 
   return (
