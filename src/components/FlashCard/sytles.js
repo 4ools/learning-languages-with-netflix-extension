@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const minCardHeight = '300px'
+const minCardHeight = '350px'
 
 const useFlashCardStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +18,7 @@ const useFlashCardStyles = makeStyles((theme) => ({
   },
   flipContainer: {
     position: 'relative',
+    minHeight: minCardHeight,
   },
   back: {
     position: 'absolute',

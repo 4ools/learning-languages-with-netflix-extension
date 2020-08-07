@@ -29,7 +29,7 @@ const FlashCard = ({ item, onRate }) => {
   const { transform, opacity } = useSpring({
     opacity: shown ? 1 : 0,
     transform: `perspective(600px) rotateX(${shown ? 180 : 0}deg)`,
-    config: { mass: 5, tension: 500, friction: 80 },
+    config: { mass: 7, tension: 1000, friction: 100 },
   })
 
   return (
@@ -64,7 +64,7 @@ const FlashCard = ({ item, onRate }) => {
                   How easy was that?
                 </Typography>
               </Box>
-              <Rate action={onRate} />
+              <Rate action={onRate} item={item} />
             </Box>
           </CardActions>
         </Card>

@@ -47,14 +47,14 @@ const IconContainer = (props) => {
   return <span {...other}>{customIcons[value].icon}</span>
 }
 
-const Rate = ({ action }) => (
+const Rate = ({ action, item }) => (
   <StyledRating
-    name="customized-icons"
+    name={`customized-icons-${item.timeCreated}`}
     size="large"
     defaultValue={3}
     getLabelText={(value) => customIcons[value].label}
     IconContainerComponent={IconContainer}
-    onChange={action}
+    onChange={() => action()}
   />
 )
 
