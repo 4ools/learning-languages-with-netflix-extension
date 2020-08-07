@@ -99,11 +99,7 @@ const Navigation = () => {
                       'are you sure you want to remove the data?'
                     )
                     if (confirmed) {
-                      alert('alright homie')
-                      // @TODO here we tell electron to remove the file!
-                      // then we need to send the files signal again
-                      // this will trigger the useDecks hook and we should be
-                      // groovie
+                      window.ipcRenderer.send('remove-file', deck.file)
                     }
                   }}
                 />

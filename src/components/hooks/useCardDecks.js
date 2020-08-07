@@ -9,6 +9,8 @@ const useCardDecks = () => {
       if (!files) {
         return
       }
+      // always reset the decks
+      setDecks([])
       // import all the files and join the contents to
       // a new array of cards to display
       files.forEach((file) => addDeckFor(file))
@@ -25,7 +27,11 @@ const useCardDecks = () => {
       // get a name using the timestamp from the first item in the session
       const date = new Date(data.default[0].timeCreated) || Date.now()
 
-      decks.current.push({ name: date.toDateString(), cards: data.default })
+      decks.current.push({
+        name: date.toDateString(),
+        cards: data.default,
+        file,
+      })
       // trigger a re-render
       // make sure to spread the state else it is considered
       // the same obj and will not re-render the new state

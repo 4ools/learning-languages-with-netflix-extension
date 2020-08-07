@@ -6,7 +6,11 @@ const fs = require('fs')
 const readdir = promisify(fs.readdir)
 const stat = promisify(fs.stat)
 
-const { BrowserWindow, Menu, app, dialog } = require('electron')
+const { BrowserWindow, Menu, app, dialog, ipcMain } = require('electron')
+
+// this is used in a few places so lets slap it up here, it is where we
+// keep the card decks
+const dataDir = path.join(__dirname, '..', 'src/data')
 
 // reload on changes
 require('electron-reload')(__dirname, {
@@ -96,12 +100,11 @@ async function createWindow() {
   // @TODO just for dev using isProd
   mainWindow.loadURL('http://localhost:3000').then(async () => {
     // we need to tell the client what json files to load in
-    const cardFiles = await flashCardFiles()
-    mainWindow.webContents.send('flashCardFiles', cardFiles)
+    loadCards()
   })
 
   if (!isProd) {
-    // mainWindow.webContents.toggleDevTools()
+    mainWindow.webContents.toggleDevTools()
   }
 
   Menu.setApplicationMenu(menu)
@@ -114,7 +117,17 @@ async function createWindow() {
     mainWindow = null
   })
 
-  // readFiles()
+  ipcMain.on('remove-file', (_, fileName) => {
+    try {
+      fs.unlinkSync(path.join(dataDir, fileName))
+      // reload the cards and send them to the window
+      loadCards()
+    } catch (error) {
+      // console it so I can debug
+      console.error(error)
+      alert('there was an error the cards no longer exits')
+    }
+  })
 }
 
 // This method will be called when Electron has finished
@@ -135,9 +148,15 @@ app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
+    console.log('are we calling this again?')
     createWindow()
   }
 })
+
+async function loadCards() {
+  const cardFiles = await flashCardFiles()
+  mainWindow.webContents.send('flashCardFiles', cardFiles)
+}
 
 async function openFile() {
   // open the modal asking for the JSON
@@ -166,20 +185,7 @@ async function openFile() {
   // @TODO date of the first item in the list
   const fileName = `card-data-${Date.now()}.json`
 
-  const dataDir = path.join(__dirname, '..', 'src/data')
-
   fs.writeFileSync(path.join(dataDir, fileName), fileContent)
-
-  // grab all the files in data
-  // convert to {name, contents} structure
-  // send it to the front end
-  // getFiles(dataDir)
-  //   .then((files) => console.log(files))
-  //   .catch((e) => console.error(e))
-
-  // do a hard reload of the front end, as it now needs to
-  // load in the json
-  // reloadWindow()
 
   // tell the front end to re-render the items in the menu
   mainWindow.webContents.send('flashCardFiles', await flashCardFiles())
