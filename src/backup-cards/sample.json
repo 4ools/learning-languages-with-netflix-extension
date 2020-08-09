@@ -1,0 +1,32 @@
+[
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Der Pool ist kalt, es gibt Snacks,\nich hatte etwas Rosé,",
+    "subtitleIndex": 3,
+    "videoId": "81114810",
+    "videoTitle": "",
+    "posTag": "Aux",
+    "timeCreated": 1594383649098,
+    "translation": "The pool is cold, there are snacks, I had some rosé,",
+    "word": "Gsus",
+    "wordLemma": "Gsus",
+    "wordDefinition": "have",
+    "subtitleContext": {
+      "subs": [
+        "Willkommen!",
+        "Der Pool ist kalt, es gibt Snacks,\nich hatte etwas Rosé,",
+        "also habe ich gute Laune."
+      ],
+      "mTranslations": [
+        "Welcome!",
+        "The pool is cold, there are snacks, I had some rosé,",
+        "so I'm in a good mood."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  }
+]

@@ -1,0 +1,988 @@
+[
+  {
+    "source": "Netflix",
+    "color": "Yellow",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Das kann nicht sein.\nSie wird wütend, wenn man ihn nur erwähnt.",
+    "subtitleIndex": 21,
+    "videoId": "81114810",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594556319582,
+    "translation": "This can't be. She gets angry when you just mention him.",
+    "word": "erwähnt",
+    "wordLemma": "erwähnen",
+    "wordDefinition": "mention",
+    "subtitleContext": {
+      "subs": [
+        "Hat nicht Gloria Geburtstag?",
+        "Das kann nicht sein.\nSie wird wütend, wenn man ihn nur erwähnt.",
+        "Ich fragte nach dem Datum"
+      ],
+      "mTranslations": [
+        "Doesn't Gloria have a birthday?",
+        "This can't be. She gets angry when you just mention him.",
+        "I asked about the date"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Da sind sie ja,",
+    "subtitleIndex": 7,
+    "videoId": "81114810",
+    "videoTitle": "",
+    "posTag": "Aux",
+    "timeCreated": 1594388998221,
+    "translation": "There they are,",
+    "word": "sind",
+    "wordLemma": "sein",
+    "wordDefinition": "be, must",
+    "subtitleContext": {
+      "subs": [
+        "Weltcup-gemäß.",
+        "Da sind sie ja,",
+        "meine erwachsenen Kinder,\ndie mir noch immer auf der Tasche liegen."
+      ],
+      "mTranslations": [
+        "World Cup-according.",
+        "There they are,",
+        "my adult children, who are still in my pocket."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Der Pool ist kalt, es gibt Snacks,\nich hatte etwas Rosé,",
+    "subtitleIndex": 3,
+    "videoId": "81114810",
+    "videoTitle": "",
+    "posTag": "Aux",
+    "timeCreated": 1594383649098,
+    "translation": "The pool is cold, there are snacks, I had some rosé,",
+    "word": "hatte",
+    "wordLemma": "haben",
+    "wordDefinition": "have",
+    "subtitleContext": {
+      "subs": [
+        "Willkommen!",
+        "Der Pool ist kalt, es gibt Snacks,\nich hatte etwas Rosé,",
+        "also habe ich gute Laune."
+      ],
+      "mTranslations": [
+        "Welcome!",
+        "The pool is cold, there are snacks, I had some rosé,",
+        "so I'm in a good mood."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Amerika vermeidet keine Herausforderungen.\nWir nehmen sie an.",
+    "subtitleIndex": 436,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Noun",
+    "timeCreated": 1594328386782,
+    "translation": "America does not avoid challenges. We accept them.",
+    "word": "Herausforderungen",
+    "wordLemma": "herausforderung",
+    "wordDefinition": "challenge",
+    "subtitleContext": {
+      "subs": [
+        "das Unmögliche möglich machen können.",
+        "Amerika vermeidet keine Herausforderungen.\nWir nehmen sie an.",
+        "Gott segne Amerika.\nAuf den Applaus warten."
+      ],
+      "mTranslations": [
+        "make the impossible possible.",
+        "America does not avoid challenges. We accept them.",
+        "God bless America. Waiting for the applause."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Amerika vermeidet keine Herausforderungen.\nWir nehmen sie an.",
+    "subtitleIndex": 436,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594328381582,
+    "translation": "America does not avoid challenges. We accept them.",
+    "word": "vermeidet",
+    "wordLemma": "vermeiden",
+    "wordDefinition": "avoid, eliminate",
+    "subtitleContext": {
+      "subs": [
+        "das Unmögliche möglich machen können.",
+        "Amerika vermeidet keine Herausforderungen.\nWir nehmen sie an.",
+        "Gott segne Amerika.\nAuf den Applaus warten."
+      ],
+      "mTranslations": [
+        "make the impossible possible.",
+        "America does not avoid challenges. We accept them.",
+        "God bless America. Waiting for the applause."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "und mittels harter Arbeit\nund Zielstrebigkeit",
+    "subtitleIndex": 434,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Noun",
+    "timeCreated": 1594328361649,
+    "translation": "and through hard work and determination",
+    "word": "Zielstrebigkeit",
+    "wordLemma": "zielstrebigkeit",
+    "wordDefinition": "purposefulness",
+    "subtitleContext": {
+      "subs": [
+        "Wo wir uns Ziele\nso hoch wie die Sterne setzen können",
+        "und mittels harter Arbeit\nund Zielstrebigkeit",
+        "das Unmögliche möglich machen können."
+      ],
+      "mTranslations": [
+        "Where we can set goals as high as the stars",
+        "and through hard work and determination",
+        "make the impossible possible."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "und mittels harter Arbeit\nund Zielstrebigkeit",
+    "subtitleIndex": 434,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Adp",
+    "timeCreated": 1594328354440,
+    "translation": "and through hard work and determination",
+    "word": "mittels",
+    "wordLemma": "mittels",
+    "wordDefinition": "via, by means, by using",
+    "subtitleContext": {
+      "subs": [
+        "Wo wir uns Ziele\nso hoch wie die Sterne setzen können",
+        "und mittels harter Arbeit\nund Zielstrebigkeit",
+        "das Unmögliche möglich machen können."
+      ],
+      "mTranslations": [
+        "Where we can set goals as high as the stars",
+        "and through hard work and determination",
+        "make the impossible possible."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Wo wir uns Ziele\nso hoch wie die Sterne setzen können",
+    "subtitleIndex": 433,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Noun",
+    "timeCreated": 1594328344493,
+    "translation": "Where we can set goals as high as the stars",
+    "word": "Ziele",
+    "wordLemma": "ziel",
+    "wordDefinition": "goal, destination",
+    "subtitleContext": {
+      "subs": [
+        "in dem Leute in Freiheit nach Glück\nund einem besseren Leben streben.",
+        "Wo wir uns Ziele\nso hoch wie die Sterne setzen können",
+        "und mittels harter Arbeit\nund Zielstrebigkeit"
+      ],
+      "mTranslations": [
+        "in which people strive for happiness and a better life in freedom.",
+        "Where we can set goals as high as the stars",
+        "and through hard work and determination"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "in dem Leute in Freiheit nach Glück\nund einem besseren Leben streben.",
+    "subtitleIndex": 432,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594328331062,
+    "translation": "in which people strive for happiness and a better life in freedom.",
+    "word": "streben",
+    "wordLemma": "streben",
+    "wordDefinition": "strive, aim, pursuit, aspiration, struts",
+    "subtitleContext": {
+      "subs": [
+        "glaubte daran,\ndass dieses Land ein Ort sein sollte,",
+        "in dem Leute in Freiheit nach Glück\nund einem besseren Leben streben.",
+        "Wo wir uns Ziele\nso hoch wie die Sterne setzen können"
+      ],
+      "mTranslations": [
+        "believed that this country should be a place",
+        "in which people strive for happiness and a better life in freedom.",
+        "Where we can set goals as high as the stars"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Darum habe ich mich auch gekümmert.",
+    "subtitleIndex": 423,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594328240864,
+    "translation": "That's what I took care of.",
+    "word": "gekümmert",
+    "wordLemma": "kümmern",
+    "wordDefinition": "care, worry, take care",
+    "subtitleContext": {
+      "subs": [
+        "Du meinst Manny und ich?\nDas wird nicht passieren, denn...",
+        "Darum habe ich mich auch gekümmert.",
+        "Hi, Mom! Ich vermisse dich!"
+      ],
+      "mTranslations": [
+        "You mean Manny and I? That's not going to happen, because...",
+        "That's what I took care of.",
+        "Hi, Mom! I miss you!"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "aber das war es wert,\num deine Tradition aufrechtzuerhalten.",
+    "subtitleIndex": 421,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594328223769,
+    "translation": "but it was worth it to maintain your tradition.",
+    "word": "aufrechtzuerhalten",
+    "wordLemma": "aufrechterhalten",
+    "wordDefinition": "maintained",
+    "subtitleContext": {
+      "subs": [
+        "Im Drive-In wurde ich schief angeschaut,",
+        "aber das war es wert,\num deine Tradition aufrechtzuerhalten.",
+        "Du meinst Manny und ich?\nDas wird nicht passieren, denn..."
+      ],
+      "mTranslations": [
+        "In the drive-in I was looked at awkwardly,",
+        "but it was worth it to maintain your tradition.",
+        "You mean Manny and I? That's not going to happen, because..."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Du bist wohl diejenige,\ndie auf mich steht.",
+    "subtitleIndex": 411,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Adv",
+    "timeCreated": 1594328140649,
+    "translation": "You are probably the one who stands on me.",
+    "word": "wohl",
+    "wordLemma": "wohl",
+    "wordDefinition": "probably, most",
+    "subtitleContext": {
+      "subs": [
+        "um Bier und Zugang\nzum Erste-Hilfe-Zelt zu bekommen.",
+        "Du bist wohl diejenige,\ndie auf mich steht.",
+        "Du bist verrückt."
+      ],
+      "mTranslations": [
+        "to get beer and access to the first aid tent.",
+        "You are probably the one who stands on me.",
+        "You are crazy."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Nein. Du warst diejenige, die hergefahren\nist, $12 für den Parkplatz bezahlt hat",
+    "subtitleIndex": 408,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Pron",
+    "timeCreated": 1594328116039,
+    "translation": "No. you were the one who drove here, paid a fee of 12 for the parking",
+    "word": "diejenige",
+    "wordLemma": "diejenige",
+    "wordDefinition": "one",
+    "subtitleContext": {
+      "subs": [
+        "ja, denke ich noch an uns. Wir waren toll!",
+        "Nein. Du warst diejenige, die hergefahren\nist, $12 für den Parkplatz bezahlt hat",
+        "und dann noch einmal $2\nfür das gelbe Armband,"
+      ],
+      "mTranslations": [
+        "yes, I still think of us. We were great!",
+        "No. you were the one who drove here, paid a fee of 12 for the parking",
+        "and then again for the yellow bracelet,"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Logischerweise hast du damit versucht,",
+    "subtitleIndex": 399,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Adv",
+    "timeCreated": 1594328045429,
+    "translation": "Logically, you tried to",
+    "word": "Logischerweise",
+    "wordLemma": "logischerweise",
+    "wordDefinition": "logically",
+    "subtitleContext": {
+      "subs": [
+        "heißt das, dass sie nicht glücklich sind.",
+        "Logischerweise hast du damit versucht,",
+        "meine Beziehung mit Arvin zu ruinieren,\nweil du nicht über mich hinweg bist."
+      ],
+      "mTranslations": [
+        "that means they are not happy.",
+        "Logically, you tried to",
+        "to ruin my relationship with Arvin because you're not over me."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "du hast einen Falafelstand\num die Ecke auf Yelp bewertet,",
+    "subtitleIndex": 392,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594327995467,
+    "translation": "you have reviewed a falafel stand around the corner on Yelp,",
+    "word": "bewertet",
+    "wordLemma": "bewerten",
+    "wordDefinition": "rate, evaluate, review",
+    "subtitleContext": {
+      "subs": [
+        "der Turm war\nin deiner Instagramstory zu sehen,",
+        "du hast einen Falafelstand\num die Ecke auf Yelp bewertet,",
+        "also musst du hier sein."
+      ],
+      "mTranslations": [
+        "the tower could be seen in your Instagram story,",
+        "you have reviewed a falafel stand around the corner on Yelp,",
+        "so you have to be here."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "der Turm war\nin deiner Instagramstory zu sehen,",
+    "subtitleIndex": 391,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Noun",
+    "timeCreated": 1594327975619,
+    "translation": "the tower could be seen in your Instagram story,",
+    "word": "Turm",
+    "wordLemma": "turm",
+    "wordDefinition": "tower",
+    "subtitleContext": {
+      "subs": [
+        "Du hast von hier getweetet,",
+        "der Turm war\nin deiner Instagramstory zu sehen,",
+        "du hast einen Falafelstand\num die Ecke auf Yelp bewertet,"
+      ],
+      "mTranslations": [
+        "You tweeted from here,",
+        "the tower could be seen in your Instagram story,",
+        "you have reviewed a falafel stand around the corner on Yelp,"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Du wirst das nicht vermasseln.",
+    "subtitleIndex": 367,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594327810575,
+    "translation": "You're not going to mess it up.",
+    "word": "vermasseln",
+    "wordLemma": "vermasseln",
+    "wordDefinition": "screw up, mess up",
+    "subtitleContext": {
+      "subs": [
+        "Vermasselt man das Community College,\nhat man keine Optionen mehr.",
+        "Du wirst das nicht vermasseln.",
+        "Ich habe schon vieles\nin meinem Leben vermasselt."
+      ],
+      "mTranslations": [
+        "If you mess up the community college, you no longer have options.",
+        "You're not going to mess it up.",
+        "I've messed up a lot of things in my life."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Natürlich ist es auch beängstigend.\nAber es fühlt sich gut an mitzumachen.",
+    "subtitleIndex": 361,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Adj",
+    "timeCreated": 1594327769662,
+    "translation": "Of course, it's also scary. But it feels good to be part of it.",
+    "word": "beängstigend",
+    "wordLemma": "beängstigen",
+    "wordDefinition": "scary, frightening",
+    "subtitleContext": {
+      "subs": [
+        "Ich schätze schon.",
+        "Natürlich ist es auch beängstigend.\nAber es fühlt sich gut an mitzumachen.",
+        "Man verliert alle Hot-Dog-Wettbewerbe,\nan denen man nicht teilnimmt."
+      ],
+      "mTranslations": [
+        "I guess so.",
+        "Of course, it's also scary. But it feels good to be part of it.",
+        "You lose all the hot dog competitions you don't participate in."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "itemType": "Phrase",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Ich will ihn nicht im Stich lassen.",
+    "subtitleIndex": 328,
+    "videoId": "81114809",
+    "videoTitle": "Modern Family St. 10: Flg. 1 Nichts geht über eine Parade",
+    "posTag": "",
+    "timeCreated": 1594327588867,
+    "translation": "I don't want to let him down.",
+    "word": "",
+    "wordLemma": "",
+    "subtitleContext": {
+      "subs": [
+        "Pam zu sagen,\ndass wir ihm nichts beigebracht haben.",
+        "Ich will ihn nicht im Stich lassen.",
+        "Ich verbringe echt gern Zeit mit ihm."
+      ],
+      "mTranslations": [
+        "Pam to say that we did not teach him anything.",
+        "I don't want to let him down.",
+        "I really like to spend time with him."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Findest du das nicht gewalttätig?",
+    "subtitleIndex": 319,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Adj",
+    "timeCreated": 1594327517276,
+    "translation": "Don't you find that violent?",
+    "word": "gewalttätig",
+    "wordLemma": "gewalttätig",
+    "wordDefinition": "violent",
+    "subtitleContext": {
+      "subs": [
+        "Vielleicht haben wir Glück\nund er schlägt sich gut.",
+        "Findest du das nicht gewalttätig?",
+        "Einen Clown wegen eines Preises\nmit Waterboarding zu foltern?"
+      ],
+      "mTranslations": [
+        "Maybe we're lucky and he's doing well.",
+        "Don't you find that violent?",
+        "To torture a clown for a price with waterboarding?"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Vielleicht fängt er an, dich zu lieben,\nwenn du aufhörst, alles dafür zu tun.",
+    "subtitleIndex": 313,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Adv",
+    "timeCreated": 1594327456981,
+    "translation": "Maybe he will start loving you when you stop doing everything you can.",
+    "word": "aufhörst",
+    "wordLemma": "aufhörst",
+    "wordDefinition": "",
+    "subtitleContext": {
+      "subs": [
+        "Er war ein Tuskegee-Pilot.",
+        "Vielleicht fängt er an, dich zu lieben,\nwenn du aufhörst, alles dafür zu tun.",
+        "Raus mit dir und bahn mir\neinen Weg durch diese Klappstühle."
+      ],
+      "mTranslations": [
+        "He was a Tuskegee pilot.",
+        "Maybe he will start loving you when you stop doing everything you can.",
+        "Get out with you and make my way through these folding chairs."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Das ist dein Tag.\nSie fühlt sich vernachlässigt.",
+    "subtitleIndex": 289,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594327229472,
+    "translation": "This is your day. She feels neglected.",
+    "word": "vernachlässigt",
+    "wordLemma": "vernachlässigen",
+    "wordDefinition": "neglect, ignore",
+    "subtitleContext": {
+      "subs": [
+        "Gut. Ich weiß, was mit Gloria los ist.",
+        "Das ist dein Tag.\nSie fühlt sich vernachlässigt.",
+        "-Nein, das ist es nicht.\n-Verdammt."
+      ],
+      "mTranslations": [
+        "Well. I know what's going on with Gloria.",
+        "This is your day. She feels neglected.",
+        "-No, it is not. -Damn."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Ich übergebe dir diese Aufgabe.",
+    "subtitleIndex": 285,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Noun",
+    "timeCreated": 1594327179623,
+    "translation": "I'll give you this task.",
+    "word": "Aufgabe",
+    "wordLemma": "aufgabe",
+    "wordDefinition": "task, duty, problem, mission",
+    "subtitleContext": {
+      "subs": [
+        "Ich befürchte, sie wird vergessen,\nnach meiner Rede stehend zu applaudieren.",
+        "Ich übergebe dir diese Aufgabe.",
+        "Dein Einsatz ist bei \"Streben nach Glück.\""
+      ],
+      "mTranslations": [
+        "I fear she will be forgotten to applaud standing after my speech.",
+        "I'll give you this task.",
+        "Your commitment is in \"Aspiration for Happiness.\""
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Ich übergebe dir diese Aufgabe.",
+    "subtitleIndex": 285,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594327172693,
+    "translation": "I'll give you this task.",
+    "word": "übergebe",
+    "wordLemma": "übergeben",
+    "wordDefinition": "pass, passing",
+    "subtitleContext": {
+      "subs": [
+        "Ich befürchte, sie wird vergessen,\nnach meiner Rede stehend zu applaudieren.",
+        "Ich übergebe dir diese Aufgabe.",
+        "Dein Einsatz ist bei \"Streben nach Glück.\""
+      ],
+      "mTranslations": [
+        "I fear she will be forgotten to applaud standing after my speech.",
+        "I'll give you this task.",
+        "Your commitment is in \"Aspiration for Happiness.\""
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Ich befürchte, sie wird vergessen,\nnach meiner Rede stehend zu applaudieren.",
+    "subtitleIndex": 284,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594327145070,
+    "translation": "I fear she will be forgotten to applaud standing after my speech.",
+    "word": "befürchte",
+    "wordLemma": "befürchten",
+    "wordDefinition": "fear, worry",
+    "subtitleContext": {
+      "subs": [
+        "Gloria ist heute nicht so gut drauf.",
+        "Ich befürchte, sie wird vergessen,\nnach meiner Rede stehend zu applaudieren.",
+        "Ich übergebe dir diese Aufgabe."
+      ],
+      "mTranslations": [
+        "Gloria isn't that good today.",
+        "I fear she will be forgotten to applaud standing after my speech.",
+        "I'll give you this task."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Wenn ich die Schleife durchschneide,\nmusst du die Kanone abfeuern.",
+    "subtitleIndex": 257,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Noun",
+    "timeCreated": 1594326958210,
+    "translation": "When I cut through the loop, you have to fire the gun.",
+    "word": "Schleife",
+    "wordLemma": "schleife",
+    "wordDefinition": "loop",
+    "subtitleContext": {
+      "subs": [
+        "Gloria, konzentrier dich.\nDu spielst hier eine wichtige Rolle.",
+        "Wenn ich die Schleife durchschneide,\nmusst du die Kanone abfeuern.",
+        "Das ist das Zeichen für alle loszugehen."
+      ],
+      "mTranslations": [
+        "Gloria, concentrate. You play an important role here.",
+        "When I cut through the loop, you have to fire the gun.",
+        "That's the sign for everyone to get going."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Wenn ich die Schleife durchschneide,\nmusst du die Kanone abfeuern.",
+    "subtitleIndex": 257,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594326954346,
+    "translation": "When I cut through the loop, you have to fire the gun.",
+    "word": "abfeuern",
+    "wordLemma": "abfeuern",
+    "wordDefinition": "firing, shoot",
+    "subtitleContext": {
+      "subs": [
+        "Gloria, konzentrier dich.\nDu spielst hier eine wichtige Rolle.",
+        "Wenn ich die Schleife durchschneide,\nmusst du die Kanone abfeuern.",
+        "Das ist das Zeichen für alle loszugehen."
+      ],
+      "mTranslations": [
+        "Gloria, concentrate. You play an important role here.",
+        "When I cut through the loop, you have to fire the gun.",
+        "That's the sign for everyone to get going."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "itemType": "Phrase",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "dann ist das wohl so,\nweil man Angst hat, Dinge zu hinterfragen.",
+    "subtitleIndex": 237,
+    "videoId": "81114809",
+    "videoTitle": "Modern Family St. 10: Flg. 1 Nichts geht über eine Parade",
+    "posTag": "",
+    "timeCreated": 1594326823365,
+    "translation": "then it is probably because you are afraid to question things.",
+    "word": "",
+    "wordLemma": "",
+    "subtitleContext": {
+      "subs": [
+        "Aber wenn man sich immer selbst sagt,\nwie glücklich man sich schätzen kann,",
+        "dann ist das wohl so,\nweil man Angst hat, Dinge zu hinterfragen.",
+        "Ich habe \"Ice Chips\" mitgebracht."
+      ],
+      "mTranslations": [
+        "But if you always tell yourself how lucky you are to be",
+        "then it is probably because you are afraid to question things.",
+        "I brought \"Ice Chips\"."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "dann ist das wohl so,\nweil man Angst hat, Dinge zu hinterfragen.",
+    "subtitleIndex": 237,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594326815783,
+    "translation": "then it is probably because you are afraid to question things.",
+    "word": "hinterfragen",
+    "wordLemma": "hinterfragen",
+    "wordDefinition": "questioned, scrutinize",
+    "subtitleContext": {
+      "subs": [
+        "Aber wenn man sich immer selbst sagt,\nwie glücklich man sich schätzen kann,",
+        "dann ist das wohl so,\nweil man Angst hat, Dinge zu hinterfragen.",
+        "Ich habe \"Ice Chips\" mitgebracht."
+      ],
+      "mTranslations": [
+        "But if you always tell yourself how lucky you are to be",
+        "then it is probably because you are afraid to question things.",
+        "I brought \"Ice Chips\"."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Aber wenn man sich immer selbst sagt,\nwie glücklich man sich schätzen kann,",
+    "subtitleIndex": 236,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594326788087,
+    "translation": "But if you always tell yourself how lucky you are to be",
+    "word": "schätzen",
+    "wordLemma": "schätzen",
+    "wordDefinition": "appreciate, treasure",
+    "subtitleContext": {
+      "subs": [
+        "Meine Frau ist hübsch, intelligent,\nund sie ist Ärztin.",
+        "Aber wenn man sich immer selbst sagt,\nwie glücklich man sich schätzen kann,",
+        "dann ist das wohl so,\nweil man Angst hat, Dinge zu hinterfragen."
+      ],
+      "mTranslations": [
+        "My wife is pretty, intelligent, and she is a doctor.",
+        "But if you always tell yourself how lucky you are to be",
+        "then it is probably because you are afraid to question things."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Ich bin abgelenkt, weil mich\ndie Kursauswahl unter Druck setzt.",
+    "subtitleIndex": 200,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594325216273,
+    "translation": "I am distracted because the course selection puts me under pressure.",
+    "word": "abgelenkt",
+    "wordLemma": "ablenken",
+    "wordDefinition": "distracted, distract",
+    "subtitleContext": {
+      "subs": [
+        "Ach ja?",
+        "Ich bin abgelenkt, weil mich\ndie Kursauswahl unter Druck setzt.",
+        "Keine Sorge, ich krieg das schon hin."
+      ],
+      "mTranslations": [
+        "Ah, yes?",
+        "I am distracted because the course selection puts me under pressure.",
+        "Don't worry, I'll get it."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Auch wenn Alex das behauptet,\nbin ich noch in Bestform.",
+    "subtitleIndex": 196,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Verb",
+    "timeCreated": 1594325163646,
+    "translation": "Even if Alex claims that, I am still at my best.",
+    "word": "behauptet",
+    "wordLemma": "behaupten",
+    "wordDefinition": "claim",
+    "subtitleContext": {
+      "subs": [
+        "Das war bloß mein erster Versuch.\nIch komme der Sache noch auf den Grund.",
+        "Auch wenn Alex das behauptet,\nbin ich noch in Bestform.",
+        "Etwas hat gerade Klick gemacht."
+      ],
+      "mTranslations": [
+        "That was just my first attempt. I am still getting to the bottom of the matter.",
+        "Even if Alex claims that, I am still at my best.",
+        "Something just clicked."
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  },
+  {
+    "source": "Netflix",
+    "color": "Green",
+    "itemType": "Word",
+    "language": "de",
+    "translationLanguage": "en",
+    "subtitle": "Kleidung. Ich muss mich wieder\nam Riemen reißen, bevor ich durchdrehe.",
+    "subtitleIndex": 182,
+    "videoId": "81114809",
+    "videoTitle": "",
+    "posTag": "Noun",
+    "timeCreated": 1594324813882,
+    "translation": "Clothes. I have to pull my strap again before I turn through.",
+    "word": "Riemen",
+    "wordLemma": "system",
+    "wordDefinition": "system",
+    "subtitleContext": {
+      "subs": [
+        "Moment. Was trägst du da?",
+        "Kleidung. Ich muss mich wieder\nam Riemen reißen, bevor ich durchdrehe.",
+        "Vielleicht willst du am Leben teilnehmen,"
+      ],
+      "mTranslations": [
+        "Moment. What are you wearing there?",
+        "Clothes. I have to pull my strap again before I turn through.",
+        "Maybe you want to participate in life,"
+      ],
+      "hTranslations": ["", "", ""]
+    }
+  }
+]

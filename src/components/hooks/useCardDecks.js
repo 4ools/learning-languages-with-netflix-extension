@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { onMessage, MSG_FLASH_CARD_FILES } from '../../util/message'
 
 const useCardDecks = () => {
   const [renderDecks, setDecks] = useState([])
@@ -39,9 +40,7 @@ const useCardDecks = () => {
       setDecks([...decks.current])
     }
 
-    // we do not have this in the browser version
-    window.ipcRenderer &&
-      window.ipcRenderer.on('flashCardFiles', updateDecksUsingFiles)
+    onMessage(MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
 
     // remove this after testing
     updateDecksUsingFiles(null, ['sample', 'another-one'])

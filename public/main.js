@@ -5,6 +5,14 @@ const { promisify } = require('util')
 const fs = require('fs')
 const readdir = promisify(fs.readdir)
 const stat = promisify(fs.stat)
+const Store = require('electron-store')
+
+// messages we send and recieve
+const MSG_FLASH_CARD_FILES = 'flashCardFiles'
+const MSG_REMOVE_FILE = 'removeFile'
+const MSG_SET_DARK_MODE = 'setDarkMode'
+
+const store = new Store()
 
 const { BrowserWindow, Menu, app, dialog, ipcMain } = require('electron')
 
@@ -101,6 +109,7 @@ async function createWindow() {
   mainWindow.loadURL('http://localhost:3000').then(async () => {
     // we need to tell the client what json files to load in
     loadCards()
+    setDarkMode()
   })
 
   if (!isProd) {
@@ -117,7 +126,7 @@ async function createWindow() {
     mainWindow = null
   })
 
-  ipcMain.on('remove-file', (_, fileName) => {
+  ipcMain.on(MSG_REMOVE_FILE, (_, fileName) => {
     try {
       fs.unlinkSync(path.join(dataDir, fileName))
       // reload the cards and send them to the window
@@ -127,6 +136,11 @@ async function createWindow() {
       console.error(error)
       alert('there was an error the cards no longer exits')
     }
+  })
+
+  ipcMain.on(MSG_SET_DARK_MODE, (_, mode) => {
+    // set it in electron store
+    store.set('darkMode', mode)
   })
 }
 
@@ -153,9 +167,14 @@ app.on('activate', function () {
   }
 })
 
+// tell the webapp to set the dark mode if we have it in the store
+function setDarkMode() {
+  mainWindow.webContents.send(MSG_SET_DARK_MODE, store.get('darkMode'))
+}
+
 async function loadCards() {
   const cardFiles = await flashCardFiles()
-  mainWindow.webContents.send('flashCardFiles', cardFiles)
+  mainWindow.webContents.send(MSG_FLASH_CARD_FILES, cardFiles)
 }
 
 async function openFile() {
@@ -188,7 +207,7 @@ async function openFile() {
   fs.writeFileSync(path.join(dataDir, fileName), fileContent)
 
   // tell the front end to re-render the items in the menu
-  mainWindow.webContents.send('flashCardFiles', await flashCardFiles())
+  mainWindow.webContents.send(MSG_FLASH_CARD_FILES, await flashCardFiles())
 }
 
 function reloadWindow() {

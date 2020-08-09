@@ -17,6 +17,7 @@ import useCardDecks from '../hooks/useCardDecks'
 import useNavigationStyles from './styles'
 import { CurrentDeckContext } from '../CurrentDeck'
 import { DarkModeContext } from '../Theme/DarkModeContext'
+import { sendMessage, MSG_REMOVE_FILE } from '../../util/message'
 
 const Navigation = () => {
   // this hook gives us all the files in the FS that have decks
@@ -26,9 +27,6 @@ const Navigation = () => {
   const { darkMode, setDarkMode } = useContext(DarkModeContext)
 
   const currentMode = darkMode !== undefined ? Boolean(darkMode) : false
-  const toggleDarkMode = (event) => {
-    setDarkMode(event.target.checked)
-  }
 
   return (
     <>
@@ -47,7 +45,9 @@ const Navigation = () => {
               <Switch
                 color="secondary"
                 checked={currentMode}
-                onChange={toggleDarkMode}
+                onChange={(event) => {
+                  setDarkMode(event.target.checked)
+                }}
                 name="DarkMode"
               />
             }
@@ -104,7 +104,7 @@ const Navigation = () => {
                       'are you sure you want to remove the data?'
                     )
                     if (confirmed) {
-                      window.ipcRenderer.send('remove-file', deck.file)
+                      sendMessage(MSG_REMOVE_FILE, deck.file)
                     }
                   }}
                 />

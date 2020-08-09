@@ -13,6 +13,7 @@
     "concurrently": "^5.2.0",
     "electron": "^9.1.0",
     "electron-reload": "^1.5.0",
+    "electron-store": "^6.0.0",
     "fontsource-roboto": "^2.1.4",
     "react": "^16.13.1",
     "react-cookie": "^4.0.3",
@@ -26,7 +27,7 @@
     "react-build": "react-scripts build",
     "react-test": "react-scripts test --env=jsdom",
     "react-eject": "react-scripts eject",
-    "electron-start": "wait-on http://localhost:3000 && electron .",
+    "electron-start": "wait-on http://localhost:3000 && electron --trace-warnings .",
     "run-dev": "concurrently -n react-server,electron-app -c blue,green \"yarn react-start\" \"yarn electron-start\""
   },
   "eslintConfig": {
