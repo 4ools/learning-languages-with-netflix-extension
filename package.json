@@ -2,7 +2,7 @@
   "name": "learning-languages-with-netflix-extension",
   "version": "0.1.0",
   "private": true,
-  "main": "public/main.js",
+  "main": "public/electron.js",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -11,28 +11,51 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "concurrently": "^5.2.0",
-    "electron": "^9.1.0",
+    "electron-is-dev": "^1.2.0",
     "electron-reload": "^1.5.0",
     "electron-store": "^6.0.0",
     "fontsource-roboto": "^2.1.4",
     "react": "^16.13.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
     "react-spring": "^8.0.27",
     "wait-on": "^5.1.0"
+  },
+  "devDependencies": {
+    "electron": "^9.1.0",
+    "electron-builder": "^22.8.0",
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
     "react-test": "react-scripts test --env=jsdom",
     "react-eject": "react-scripts eject",
-    "electron-start": "wait-on http://localhost:3000 && electron --trace-warnings .",
-    "run-dev": "concurrently -n react-server,electron-app -c blue,green \"yarn react-start\" \"yarn electron-start\""
+    "electron-start": "wait-on http://localhost:3000 && electron .",
+    "package": "electron-builder --mac --publish never",
+    "run-dev": "concurrently -n react-server,electron-app -c blue,green \"yarn react-start\" \"yarn electron-start\"",
+    "clean": "rm -rf build && rm -rf dist",
+    "build-and-package": "yarn clean && yarn react-build && yarn package"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
+  "build": {
+    "appId": "com.llwncompanion.app",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "icon": "build/icon.png"
+    },
+    "publish": {
+      "provider": "github",
+      "repo": "https://github.com/4ools/learning-languages-with-netflix-extension",
+      "owner": "sirjiggles"
+    }
+  },
+  "homepage": "./",
   "browserslist": {
     "production": [
       ">0.2%",

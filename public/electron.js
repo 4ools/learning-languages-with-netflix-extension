@@ -6,6 +6,8 @@ const fs = require('fs')
 const readdir = promisify(fs.readdir)
 const stat = promisify(fs.stat)
 const Store = require('electron-store')
+const url = require('url')
+const isDev = require('electron-is-dev')
 
 // messages we send and recieve
 const MSG_FLASH_CARD_FILES = 'flashCardFiles'
@@ -21,15 +23,17 @@ const { BrowserWindow, Menu, app, dialog, ipcMain } = require('electron')
 const dataDir = path.join(__dirname, '..', 'src/data')
 
 // reload on changes
-require('electron-reload')(__dirname, {
-  electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
-})
+if (isDev) {
+  require('electron-reload')(__dirname, {
+    electron: path.join(__dirname, '../node_modules', '.bin', 'electron'),
+    ignored: [/node_modules|[/\\]\./, '/src/data/**'],
+    argv: [],
+  })
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-
-const isProd = process.env.NODE_ENV === 'production'
 
 const menu = Menu.buildFromTemplate([
   ...(isMac
@@ -62,7 +66,7 @@ const menu = Menu.buildFromTemplate([
       },
     ],
   },
-  ...(isProd
+  ...(!isDev
     ? []
     : [
         {
@@ -104,15 +108,21 @@ async function createWindow() {
     },
   })
 
-  // and load the index.html of the app.
-  // @TODO just for dev using isProd
-  mainWindow.loadURL('http://localhost:3000').then(async () => {
+  const startUrl = isDev
+    ? 'http://localhost:3000'
+    : url.format({
+        pathname: path.join(__dirname, '/index.html'),
+        protocol: 'file:',
+        slashes: true,
+      })
+
+  mainWindow.loadURL(startUrl).then(async () => {
     // we need to tell the client what json files to load in
     loadCards()
     setDarkMode()
   })
 
-  if (!isProd) {
+  if (isDev) {
     mainWindow.webContents.toggleDevTools()
   }
 
@@ -127,14 +137,14 @@ async function createWindow() {
   })
 
   ipcMain.on(MSG_REMOVE_FILE, (_, fileName) => {
+    console.log('got the message to remove file', fileName)
     try {
       fs.unlinkSync(path.join(dataDir, fileName))
       // reload the cards and send them to the window
-      loadCards()
+      // loadCards()
     } catch (error) {
       // console it so I can debug
       console.error(error)
-      alert('there was an error the cards no longer exits')
     }
   })
 

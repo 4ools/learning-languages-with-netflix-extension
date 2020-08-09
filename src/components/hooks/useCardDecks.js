@@ -43,7 +43,7 @@ const useCardDecks = () => {
     onMessage(MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
 
     // remove this after testing
-    updateDecksUsingFiles(null, ['sample', 'another-one'])
+    // updateDecksUsingFiles(null, ['sample', 'another-one'])
   }, [])
 
   return renderDecks
