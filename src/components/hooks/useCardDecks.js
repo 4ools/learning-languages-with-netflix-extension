@@ -6,7 +6,7 @@ const useCardDecks = () => {
   const decks = useRef([])
 
   useEffect(() => {
-    function updateDecksUsingFiles(_, files) {
+    function updateDecksUsingFiles(files) {
       if (!files) {
         return
       }
@@ -18,8 +18,11 @@ const useCardDecks = () => {
     }
 
     async function addDeckFor(file) {
+      // const path = `../../data/${file}`
+      const path = `../../data/${file}`
+      console.log(path)
       // use a dynamic import to get the contents of the deck of cards
-      const data = await import(`../../data/${file}`)
+      const data = await import(path)
       // if we do not have the right file struct, just come out
       if (!data.default) {
         return
@@ -40,10 +43,12 @@ const useCardDecks = () => {
       setDecks([...decks.current])
     }
 
-    onMessage(MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
+    onMessage(MSG_FLASH_CARD_FILES, (_, files) => {
+      updateDecksUsingFiles(files)
+    })
 
     // remove this after testing
-    // updateDecksUsingFiles(null, ['sample', 'another-one'])
+    updateDecksUsingFiles(['sample.json', 'another-one.json'])
   }, [])
 
   return renderDecks

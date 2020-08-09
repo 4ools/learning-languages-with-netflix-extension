@@ -211,7 +211,6 @@ async function openFile() {
   // read the contents of the file using fs
   const fileContent = fs.readFileSync(file)
 
-  // @TODO date of the first item in the list
   const fileName = `card-data-${Date.now()}.json`
 
   fs.writeFileSync(path.join(dataDir, fileName), fileContent)
