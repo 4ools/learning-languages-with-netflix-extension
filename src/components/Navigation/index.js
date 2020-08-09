@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import List from '@material-ui/core/List'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -25,6 +25,7 @@ const Navigation = () => {
   const classes = useNavigationStyles()
   const currentDeckContext = useContext(CurrentDeckContext)
   const { darkMode, setDarkMode } = useContext(DarkModeContext)
+  const [selectedItem, setSelectedItem] = useState(null)
 
   const currentMode = darkMode !== undefined ? Boolean(darkMode) : false
 
@@ -64,8 +65,14 @@ const Navigation = () => {
       >
         <Toolbar />
         <div className={classes.drawerContainer}>
-          <List>
-            <ListItem button>
+          <List disablePadding={true}>
+            <ListItem
+              button
+              selected={selectedItem === '-1'}
+              onClick={() => {
+                setSelectedItem('-1')
+              }}
+            >
               <ListItemIcon>
                 <FitnessCenterIcon color="secondary" />
               </ListItemIcon>
@@ -79,12 +86,14 @@ const Navigation = () => {
             </ListItem>
           </List>
           <Divider />
-          <List>
+          <List disablePadding={true}>
             {decks.map((deck, index) => (
               <ListItem
+                selected={selectedItem === index}
                 button
                 key={`card-deck-in-nav-${index}`}
                 onClick={() => {
+                  setSelectedItem(index)
                   currentDeckContext.setCurrentDeck(deck)
                 }}
               >

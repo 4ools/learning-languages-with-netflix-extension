@@ -12,7 +12,7 @@ const FlashCardDeck = ({ cards }) => {
   return currentCards
     .filter((item) => item.word && item.wordDefinition)
     .map((item) => (
-      <Grid item sm={12} md={6} lg={4} key={`flash-card-${item.timeCreated}`}>
+      <Grid item xs={12} md={6} lg={4} key={`flash-card-${item.timeCreated}`}>
         <FlashCard
           item={item}
           onRate={(rating) => {

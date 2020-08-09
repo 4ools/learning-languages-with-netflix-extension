@@ -13,6 +13,7 @@ const useNavigationStyles = makeStyles((theme) => ({
   },
   drawerContainer: {
     overflow: 'auto',
+    paddingTop: 20,
   },
   content: {
     flexGrow: 1,
