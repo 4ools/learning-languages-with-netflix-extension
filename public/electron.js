@@ -103,7 +103,8 @@ async function createWindow() {
     width: 1200,
     height: 900,
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: false,
+      // contextIsolation: true,
       preload: __dirname + '/preload.js',
     },
   })
@@ -141,7 +142,7 @@ async function createWindow() {
     try {
       fs.unlinkSync(path.join(dataDir, fileName))
       // reload the cards and send them to the window
-      // loadCards()
+      loadCards()
     } catch (error) {
       // console it so I can debug
       console.error(error)
@@ -229,12 +230,15 @@ function reloadWindow() {
 async function flashCardFiles() {
   const dataDir = path.join(__dirname, '..', 'src/data')
   const files = await getFiles(dataDir)
+  let data = []
+  files.forEach((fileName) => {
+    data.push({
+      file: fileName.substring(fileName.lastIndexOf('/') + 1, fileName.length),
+      content: JSON.parse(fs.readFileSync(fileName)),
+    })
+  })
 
-  // remove the full path and just return the filename
-  // for example /users/me/thing.json to just thing.json
-  return files.map((fileName) =>
-    fileName.substring(fileName.lastIndexOf('/') + 1, fileName.length)
-  )
+  return data
 }
 
 async function getFiles(dir) {

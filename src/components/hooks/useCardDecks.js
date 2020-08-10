@@ -6,34 +6,36 @@ const useCardDecks = () => {
   const decks = useRef([])
 
   useEffect(() => {
-    function updateDecksUsingFiles(files) {
+    function updateDecksUsingFiles(_, files) {
       if (!files) {
         return
       }
       // always reset the decks
+      decks.current = []
       setDecks([])
       // import all the files and join the contents to
       // a new array of cards to display
       files.forEach((file) => addDeckFor(file))
     }
 
-    async function addDeckFor(file) {
+    async function addDeckFor(fileDetails) {
+      const { content, file } = fileDetails
       // const path = `../../data/${file}`
-      const path = `../../data/${file}`
-      console.log(path)
+      // console.log(path)
       // use a dynamic import to get the contents of the deck of cards
-      const data = await import(path)
+      // const data = await import(`../../data/${file}`)
+
       // if we do not have the right file struct, just come out
-      if (!data.default) {
+      if (!content) {
         return
       }
       // push the new deck to the array
       // get a name using the timestamp from the first item in the session
-      const date = new Date(data.default[0].timeCreated) || Date.now()
+      const date = new Date(content[0].timeCreated) || Date.now()
 
       decks.current.push({
         name: date.toDateString(),
-        cards: data.default,
+        cards: content,
         file,
       })
       // trigger a re-render
@@ -43,12 +45,7 @@ const useCardDecks = () => {
       setDecks([...decks.current])
     }
 
-    onMessage(MSG_FLASH_CARD_FILES, (_, files) => {
-      updateDecksUsingFiles(files)
-    })
-
-    // remove this after testing
-    updateDecksUsingFiles(['sample.json', 'another-one.json'])
+    onMessage(MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
   }, [])
 
   return renderDecks
