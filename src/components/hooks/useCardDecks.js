@@ -7,12 +7,13 @@ const useCardDecks = () => {
 
   useEffect(() => {
     function updateDecksUsingFiles(_, files) {
-      if (!files) {
-        return
-      }
       // always reset the decks
       decks.current = []
       setDecks([])
+
+      if (!files) {
+        return
+      }
       // import all the files and join the contents to
       // a new array of cards to display
       files.forEach((file) => addDeckFor(file))

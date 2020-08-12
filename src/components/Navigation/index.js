@@ -113,6 +113,12 @@ const Navigation = () => {
                       'are you sure you want to remove the data?'
                     )
                     if (confirmed) {
+                      // if we removed the deck you are looking at clear
+                      // the current deck context
+                      if (deck.name === currentDeckContext.deck.name) {
+                        // this means you are now not looking at a deck "default state"
+                        currentDeckContext.setCurrentDeck(null)
+                      }
                       sendMessage(MSG_REMOVE_FILE, deck.file)
                     }
                   }}
