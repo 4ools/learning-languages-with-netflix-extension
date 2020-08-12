@@ -235,7 +235,7 @@ async function createWindow() {
 
     // now we have the cards by weight we just sort and grab the top x
     // and return them
-    weights.sort(sortCardsByWeight)
+    weights.sort(sortCardsByWeight).reverse()
 
     const cuttingPoint = weights.length > 20 ? 20 : weights.length
     cards = weights.slice(0, cuttingPoint).map((weightCard) => weightCard.card)
