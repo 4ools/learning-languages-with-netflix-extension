@@ -13,6 +13,9 @@ const isDev = require('electron-is-dev')
 const MSG_FLASH_CARD_FILES = 'flashCardFiles'
 const MSG_REMOVE_FILE = 'removeFile'
 const MSG_SET_DARK_MODE = 'setDarkMode'
+const MSG_RATE_CARD = 'rateCard'
+const MSG_GET_PRACTICE_CARDS = 'getPracticeCards'
+const MSG_PRACTICE_CARDS = 'practiceCards'
 
 const store = new Store()
 
@@ -114,6 +117,9 @@ async function createWindow() {
     },
   })
 
+  // console.log('removing practice data')
+  // store.clear()
+
   const startUrl = isDev
     ? 'http://localhost:3000'
     : url.format({
@@ -156,6 +162,97 @@ async function createWindow() {
     // set it in electron store
     store.set('darkMode', mode)
   })
+
+  // when a card is updated with a rating
+  ipcMain.on(MSG_RATE_CARD, (_, { item, deckName, rating }) => {
+    let practiceData = store.get('praticeData')
+    // must be the first card ever rated so lets set up the store
+    if (!practiceData) {
+      // init it and get it again
+      store.set('praticeData', {})
+      practiceData = store.get('praticeData')
+    }
+
+    // if there was no deck name, we have a rating on the practice screen
+    // so we need to find the card by its time updated and update the rating
+    // and time practiced
+    if (!deckName) {
+      Object.keys(practiceData).forEach((deckName) => {
+        Object.keys(practiceData[deckName]).forEach((cardName) => {
+          if (Number(cardName) === Number(item.timeCreated)) {
+            practiceData[deckName][cardName].lastPractice = Date.now()
+            practiceData[deckName][cardName].rating = rating
+          }
+        })
+      })
+    } else {
+      // if we do not already have the deck
+      if (!practiceData[deckName]) {
+        practiceData[deckName] = {}
+      }
+
+      // if the card is not in the deck, add it there
+      if (!practiceData[deckName][item.timeCreated]) {
+        practiceData[deckName][item.timeCreated] = item
+      }
+
+      // now we update the time last practiced and the rating
+      // these are then used by practice mode to work out
+      // what decks to practice
+      practiceData[deckName][item.timeCreated].lastPractice = Date.now()
+      practiceData[deckName][item.timeCreated].rating = rating
+    }
+
+    // console.log(JSON.stringify(practiceData, null, 2))
+
+    // set the store again
+    store.set('praticeData', practiceData)
+  })
+
+  ipcMain.on(MSG_GET_PRACTICE_CARDS, () => {
+    // we will get some cards and send em back
+    let cards = []
+    const practiceData = store.get('praticeData')
+
+    if (!practiceData) {
+      // just let them know right away, we have nothing to
+      // practice here
+      mainWindow.webContents.send(MSG_PRACTICE_CARDS, cards)
+      return
+    }
+
+    // we will give each card a weight based on the difficulty * time
+    const weights = []
+    Object.keys(practiceData).forEach((deckName) => {
+      Object.keys(practiceData[deckName]).forEach((cardName) => {
+        const card = practiceData[deckName][cardName]
+        weights.push({
+          weight: card.rating * card.lastPractice,
+          card,
+        })
+      })
+    })
+
+    // now we have the cards by weight we just sort and grab the top x
+    // and return them
+    weights.sort(sortCardsByWeight)
+
+    const cuttingPoint = weights.length > 20 ? 20 : weights.length
+    cards = weights.slice(0, cuttingPoint).map((weightCard) => weightCard.card)
+    const formattedCards = { cards }
+
+    mainWindow.webContents.send(MSG_PRACTICE_CARDS, formattedCards)
+  })
+}
+
+function sortCardsByWeight(a, b) {
+  if (a.weight < b.weight) {
+    return -1
+  }
+  if (a.weight > b.weight) {
+    return 1
+  }
+  return 0
 }
 
 // This method will be called when Electron has finished

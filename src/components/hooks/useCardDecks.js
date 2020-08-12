@@ -21,10 +21,6 @@ const useCardDecks = () => {
 
     async function addDeckFor(fileDetails) {
       const { content, file } = fileDetails
-      // const path = `../../data/${file}`
-      // console.log(path)
-      // use a dynamic import to get the contents of the deck of cards
-      // const data = await import(`../../data/${file}`)
 
       // if we do not have the right file struct, just come out
       if (!content) {

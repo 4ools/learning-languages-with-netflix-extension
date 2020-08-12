@@ -20,7 +20,7 @@ const FlashCardPage = () => {
         Card Deck: {date.toDateString()}
       </Typography>
       <Grid container spacing={3}>
-        <FlashCardDeck cards={deck.cards} />
+        <FlashCardDeck cards={deck.cards} deckName={deck.file} />
       </Grid>
     </>
   )

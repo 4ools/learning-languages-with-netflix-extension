@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import FlashCard from '../FlashCard'
 import Grid from '@material-ui/core/Grid'
+import { sendMessage, MSG_RATE_CARD } from '../../util/message'
 
-const FlashCardDeck = ({ cards }) => {
+const FlashCardDeck = ({ cards, deckName }) => {
   const [currentCards, setCurrentCards] = useState(cards)
 
   useEffect(() => {
@@ -16,8 +17,11 @@ const FlashCardDeck = ({ cards }) => {
         <FlashCard
           item={item}
           onRate={(rating) => {
-            // @TODO
-            // tell main to store this word and how hard it was
+            sendMessage(MSG_RATE_CARD, {
+              item,
+              rating,
+              deckName,
+            })
 
             // remove the card from the list
             setCurrentCards([...currentCards.filter((card) => card !== item)])

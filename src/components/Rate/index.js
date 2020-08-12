@@ -57,7 +57,8 @@ const Rate = ({ action, name }) => (
     defaultValue={3}
     getLabelText={(value) => customIcons[value].label}
     IconContainerComponent={IconContainer}
-    onChange={(value) => action(value)}
+    // we invert the order as I care about how hard it was not easy
+    onChange={(_, value) => action(5 + 1 - value)}
   />
 )
 
