@@ -1,5 +1,10 @@
 {
-  "name": "learning-languages-with-netflix-extension",
+  "name": "learn-languages-with-netflix-companion",
+  "description": "Learn languages with netflix companion app",
+  "author": {
+    "name": "Gareth Fuller",
+    "email": "gareth126@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
@@ -41,6 +46,7 @@
     "extends": "react-app"
   },
   "build": {
+    "productName": "LLWN Companion",
     "appId": "com.llwncompanion.app",
     "files": [
       "build/**/*",

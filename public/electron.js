@@ -20,7 +20,11 @@ const { BrowserWindow, Menu, app, dialog, ipcMain } = require('electron')
 
 // this is used in a few places so lets slap it up here, it is where we
 // keep the card decks
-const dataDir = path.join(__dirname, '..', 'src/data')
+const dataDir = path.join(app.getPath('userData'), '/cardData')
+// if the dataDir does not exist then make it now
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir)
+}
 
 // reload on changes
 if (isDev) {
@@ -66,6 +70,7 @@ const menu = Menu.buildFromTemplate([
       },
     ],
   },
+  // @TODO make this oposite later 🙈
   ...(!isDev
     ? []
     : [
@@ -138,14 +143,12 @@ async function createWindow() {
   })
 
   ipcMain.on(MSG_REMOVE_FILE, (_, fileName) => {
-    console.log('got the message to remove file', fileName)
     try {
       fs.unlinkSync(path.join(dataDir, fileName))
       // reload the cards and send them to the window
       loadCards()
     } catch (error) {
-      // console it so I can debug
-      console.error(error)
+      throw new Error(error)
     }
   })
 
@@ -173,7 +176,6 @@ app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    console.log('are we calling this again?')
     createWindow()
   }
 })
@@ -214,7 +216,11 @@ async function openFile() {
 
   const fileName = `card-data-${Date.now()}.json`
 
-  fs.writeFileSync(path.join(dataDir, fileName), fileContent)
+  try {
+    fs.writeFileSync(path.join(dataDir, fileName), fileContent)
+  } catch (error) {
+    throw new Error(error)
+  }
 
   // tell the front end to re-render the items in the menu
   mainWindow.webContents.send(MSG_FLASH_CARD_FILES, await flashCardFiles())
@@ -228,7 +234,6 @@ function reloadWindow() {
 }
 
 async function flashCardFiles() {
-  const dataDir = path.join(__dirname, '..', 'src/data')
   const files = await getFiles(dataDir)
   let data = []
   files.forEach((fileName) => {
