@@ -9,7 +9,6 @@ const CurrentDeckProvider = ({ children }) => {
   // when we get some practice cards update what cards we are looking at
   useEffect(() => {
     onMessage(MSG_PRACTICE_CARDS, (_, cards) => {
-      console.log('got some practice cards')
       setCurrentDeck(cards)
     })
   }, [])

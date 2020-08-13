@@ -8,6 +8,7 @@ const stat = promisify(fs.stat)
 const Store = require('electron-store')
 const url = require('url')
 const isDev = require('electron-is-dev')
+const { BrowserWindow, Menu, app, dialog, ipcMain } = require('electron')
 
 // messages we send and recieve
 const MSG_FLASH_CARD_FILES = 'flashCardFiles'
@@ -19,8 +20,6 @@ const MSG_PRACTICE_CARDS = 'practiceCards'
 
 const store = new Store()
 
-const { BrowserWindow, Menu, app, dialog, ipcMain } = require('electron')
-
 // this is used in a few places so lets slap it up here, it is where we
 // keep the card decks
 const dataDir = path.join(app.getPath('userData'), '/cardData')
@@ -28,6 +27,9 @@ const dataDir = path.join(app.getPath('userData'), '/cardData')
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir)
 }
+
+// just a const name for the practice data
+const practiceDataStore = 'praticeData'
 
 // reload on changes
 if (isDev) {
@@ -151,6 +153,7 @@ async function createWindow() {
   ipcMain.on(MSG_REMOVE_FILE, (_, fileName) => {
     try {
       fs.unlinkSync(path.join(dataDir, fileName))
+      removeFromPractice(fileName)
       // reload the cards and send them to the window
       loadCards()
     } catch (error) {
@@ -165,12 +168,12 @@ async function createWindow() {
 
   // when a card is updated with a rating
   ipcMain.on(MSG_RATE_CARD, (_, { item, deckName, rating }) => {
-    let practiceData = store.get('praticeData')
+    let practiceData = store.get(practiceDataStore)
     // must be the first card ever rated so lets set up the store
     if (!practiceData) {
       // init it and get it again
-      store.set('praticeData', {})
-      practiceData = store.get('praticeData')
+      store.set(practiceDataStore, {})
+      practiceData = store.get(practiceDataStore)
     }
 
     // if there was no deck name, we have a rating on the practice screen
@@ -206,13 +209,13 @@ async function createWindow() {
     // console.log(JSON.stringify(practiceData, null, 2))
 
     // set the store again
-    store.set('praticeData', practiceData)
+    store.set(practiceDataStore, practiceData)
   })
 
   ipcMain.on(MSG_GET_PRACTICE_CARDS, () => {
     // we will get some cards and send em back
     let cards = []
-    const practiceData = store.get('praticeData')
+    const practiceData = store.get(practiceDataStore)
 
     if (!practiceData) {
       // just let them know right away, we have nothing to
@@ -245,16 +248,6 @@ async function createWindow() {
   })
 }
 
-function sortCardsByWeight(a, b) {
-  if (a.weight < b.weight) {
-    return -1
-  }
-  if (a.weight > b.weight) {
-    return 1
-  }
-  return 0
-}
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -276,6 +269,27 @@ app.on('activate', function () {
     createWindow()
   }
 })
+
+function sortCardsByWeight(a, b) {
+  if (a.weight < b.weight) {
+    return -1
+  }
+  if (a.weight > b.weight) {
+    return 1
+  }
+  return 0
+}
+
+function removeFromPractice(fileName) {
+  const practiceData = store.get(practiceDataStore)
+  if (!practiceData || !practiceData[fileName]) {
+    return
+  }
+
+  delete practiceData[fileName]
+
+  store.set(practiceDataStore, practiceData)
+}
 
 // tell the webapp to set the dark mode if we have it in the store
 function setDarkMode() {
