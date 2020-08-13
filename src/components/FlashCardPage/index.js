@@ -3,7 +3,7 @@ import FlashCardDeck from '../FlashCardDeck'
 import Grid from '@material-ui/core/Grid'
 import { Typography } from '@material-ui/core'
 import { CurrentDeckContext } from '../CurrentDeck'
-import { ReactComponent as Winner } from '../../svgs/winner.svg'
+import { ReactComponent as Tree } from '../../svgs/tree.svg'
 import EmptyState from '../EmptyState'
 
 const FlashCardPage = () => {
@@ -14,7 +14,10 @@ const FlashCardPage = () => {
   if (!deck) {
     return (
       <EmptyState>
-        <Winner width="100%" />
+        <Typography variant="h5" style={{ textAlign: 'center' }}>
+          Click on a session to re-do a session or practice
+        </Typography>
+        <Tree width="100%" />
       </EmptyState>
     )
   }
