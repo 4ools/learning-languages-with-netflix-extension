@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
         <Theme>
           <CurrentDeckProvider>
             <Navigation />
-            <Container maxwidth="sm">
+            <Container maxwidth="sm" style={{ height: 'calc(100% - 64px)' }}>
               <Toolbar />
               {children}
             </Container>

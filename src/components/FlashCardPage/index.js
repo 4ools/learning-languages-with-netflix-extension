@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid'
 import { Typography } from '@material-ui/core'
 import { CurrentDeckContext } from '../CurrentDeck'
 import { ReactComponent as Tree } from '../../svgs/tree.svg'
+import { ReactComponent as Winner } from '../../svgs/winner.svg'
 import EmptyState from '../EmptyState'
 
 const FlashCardPage = () => {
@@ -13,11 +14,20 @@ const FlashCardPage = () => {
   // chosen
   if (!deck) {
     return (
-      <EmptyState>
-        <Typography variant="h5" style={{ textAlign: 'center' }}>
-          Click on a session to re-do a session or practice
-        </Typography>
-        <Tree width="100%" />
+      <EmptyState
+        title="Click on a session to re-do a session or practice"
+        max="350"
+      >
+        <Tree width="100%" fillOpacity="0.8" height="auto" />
+      </EmptyState>
+    )
+  }
+
+  // if you did the deck
+  if (deck.cards.length === 0) {
+    return (
+      <EmptyState title="Woop woop 🎉" max="500px">
+        <Winner width="100%" height="auto" />
       </EmptyState>
     )
   }
@@ -29,7 +39,7 @@ const FlashCardPage = () => {
         Card Deck: {date.toDateString()}
       </Typography>
       <Grid container spacing={3}>
-        <FlashCardDeck cards={deck.cards} deckName={deck.file} />
+        <FlashCardDeck />
       </Grid>
     </>
   )

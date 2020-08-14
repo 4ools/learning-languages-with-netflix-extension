@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import FlashCard from '../FlashCard'
 import Grid from '@material-ui/core/Grid'
 import { sendMessage, MSG_RATE_CARD } from '../../util/message'
+import { CurrentDeckContext } from '../CurrentDeck'
 
-const FlashCardDeck = ({ cards, deckName }) => {
-  const [currentCards, setCurrentCards] = useState(cards)
+const FlashCardDeck = () => {
+  // const [currentCards, setCurrentCards] = useState(cards)
+  const { deck, setCurrentDeck } = useContext(CurrentDeckContext)
 
-  useEffect(() => {
-    setCurrentCards(cards)
-  }, [cards])
+  // useEffect(() => {
+  //   setCurrentCards(cards)
+  // }, [cards])
 
-  return currentCards
+  return deck.cards
     .filter((item) => item.word && item.wordDefinition)
     .map((item) => (
       <Grid item xs={12} md={6} lg={4} key={`flash-card-${item.timeCreated}`}>
@@ -20,11 +22,14 @@ const FlashCardDeck = ({ cards, deckName }) => {
             sendMessage(MSG_RATE_CARD, {
               item,
               rating,
-              deckName,
+              deckName: deck.fileName,
             })
 
             // remove the card from the list
-            setCurrentCards([...currentCards.filter((card) => card !== item)])
+            setCurrentDeck({
+              ...deck,
+              cards: [...deck.cards.filter((card) => card !== item)],
+            })
 
             // if we are on the last card then we can show the done state
             // @TODO
