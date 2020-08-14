@@ -38,9 +38,11 @@
     "react-eject": "react-scripts eject",
     "electron-start": "wait-on http://localhost:3000 && electron .",
     "package": "electron-builder --mac --publish never",
+    "package-deploy": "electron-builder --mac --publish always",
     "run-dev": "concurrently -n react-server,electron-app -c blue,green \"yarn react-start\" \"yarn electron-start\"",
     "clean": "rm -rf build && rm -rf dist",
-    "build-and-package": "yarn clean && yarn react-build && yarn package"
+    "build-and-package": "yarn clean && yarn react-build && yarn package",
+    "build-package-and-deploy": "yarn clean && yarn react-build && yarn package-deploy"
   },
   "eslintConfig": {
     "extends": "react-app"

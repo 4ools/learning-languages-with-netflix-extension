@@ -75,7 +75,6 @@ const menu = Menu.buildFromTemplate([
       },
     ],
   },
-  // @TODO make this oposite later 🙈
   ...(!isDev
     ? []
     : [

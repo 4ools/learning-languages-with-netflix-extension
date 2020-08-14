@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import FlashCard from '../FlashCard'
 import Grid from '@material-ui/core/Grid'
 import { sendMessage, MSG_RATE_CARD } from '../../util/message'
 import { CurrentDeckContext } from '../CurrentDeck'
 
 const FlashCardDeck = () => {
-  // const [currentCards, setCurrentCards] = useState(cards)
   const { deck, setCurrentDeck } = useContext(CurrentDeckContext)
-
-  // useEffect(() => {
-  //   setCurrentCards(cards)
-  // }, [cards])
 
   return deck.cards
     .filter((item) => item.word && item.wordDefinition)
