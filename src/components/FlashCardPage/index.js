@@ -36,7 +36,7 @@ const FlashCardPage = () => {
   return (
     <>
       <Typography variant="h5" style={{ marginBottom: 30, marginTop: 30 }}>
-        Card Deck: {date.toDateString()}
+        {deck.parctice ? 'Practice Mode' : `Card Deck: ${date.toDateString()}`}
       </Typography>
       <Grid container spacing={3}>
         <FlashCardDeck />
