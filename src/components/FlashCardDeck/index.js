@@ -25,9 +25,6 @@ const FlashCardDeck = () => {
               ...deck,
               cards: [...deck.cards.filter((card) => card !== item)],
             })
-
-            // if we are on the last card then we can show the done state
-            // @TODO
           }}
         />
       </Grid>

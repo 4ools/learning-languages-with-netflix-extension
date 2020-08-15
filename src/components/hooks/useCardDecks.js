@@ -1,8 +1,10 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import { onMessage, MSG_FLASH_CARD_FILES } from '../../util/message'
+import { CurrentDeckContext } from '../CurrentDeck'
 
 const useCardDecks = () => {
   const [renderDecks, setDecks] = useState([])
+  const { setCurrentDeck } = useContext(CurrentDeckContext)
   const decks = useRef([])
 
   useEffect(() => {
@@ -30,20 +32,25 @@ const useCardDecks = () => {
       // get a name using the timestamp from the first item in the session
       const date = new Date(content[0].timeCreated) || Date.now()
 
-      decks.current.push({
+      const newDeck = {
         name: date.toDateString(),
         cards: content,
         file,
-      })
+      }
+
+      decks.current.push(newDeck)
       // trigger a re-render
       // make sure to spread the state else it is considered
       // the same obj and will not re-render the new state
       // in the DOM
       setDecks([...decks.current])
+
+      // set the view to show the active deck via the deck context
+      setCurrentDeck(newDeck)
     }
 
     onMessage(MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
-  }, [])
+  }, [setCurrentDeck])
 
   return renderDecks
 }
