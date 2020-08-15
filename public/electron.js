@@ -118,7 +118,6 @@ async function createWindow() {
     },
   })
 
-  // console.log('removing practice data')
   // store.clear()
 
   const startUrl = isDev
@@ -204,8 +203,6 @@ async function createWindow() {
       practiceData[deckName][item.timeCreated].lastPractice = Date.now()
       practiceData[deckName][item.timeCreated].rating = rating
     }
-
-    // console.log(JSON.stringify(practiceData, null, 2))
 
     // set the store again
     store.set(practiceDataStore, practiceData)
