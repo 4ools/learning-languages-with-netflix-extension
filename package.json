@@ -56,14 +56,11 @@
     ],
     "mac": {
       "icon": "build/icon.png"
-    },
-    "publish": {
-      "provider": "github",
-      "vPrefixedTagName": true,
-      "private": false,
-      "repo": "https://github.com/sirJiggles/LLWN-companion",
-      "owner": "sirjiggles"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4ools/learning-languages-with-netflix-extension.git"
   },
   "homepage": "./",
   "browserslist": {
