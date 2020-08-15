@@ -59,7 +59,9 @@
     },
     "publish": {
       "provider": "github",
-      "repo": "https://github.com/4ools/learning-languages-with-netflix-extension",
+      "vPrefixedTagName": true,
+      "private": false,
+      "repo": "https://github.com/sirJiggles/LLWN-companion",
       "owner": "sirjiggles"
     }
   },

@@ -17,7 +17,7 @@ const FlashCardDeck = () => {
             sendMessage(MSG_RATE_CARD, {
               item,
               rating,
-              deckName: deck.fileName,
+              deckName: deck.file,
             })
 
             // remove the card from the list

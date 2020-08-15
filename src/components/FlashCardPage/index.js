@@ -12,7 +12,7 @@ const FlashCardPage = () => {
 
   // there is no need to render anything unless a deck has been
   // chosen
-  if (!deck) {
+  if (!deck || !deck.cards) {
     return (
       <EmptyState
         title="Click on a session to re-do a session or practice"
