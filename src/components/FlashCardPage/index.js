@@ -6,6 +6,7 @@ import { CurrentDeckContext } from '../CurrentDeck'
 import { ReactComponent as Tree } from '../../svgs/tree.svg'
 import { ReactComponent as Winner } from '../../svgs/winner.svg'
 import EmptyState from '../EmptyState'
+import { sendMessage, MSG_SET_DECK_NAME } from '../../util/message'
 
 const FlashCardPage = () => {
   const { deck } = useContext(CurrentDeckContext)
@@ -32,11 +33,23 @@ const FlashCardPage = () => {
     )
   }
 
-  const date = new Date(deck.cards[0].timeCreated) || Date.now()
   return (
     <>
-      <Typography variant="h5" style={{ marginBottom: 30, marginTop: 30 }}>
-        {deck.parctice ? 'Practice Mode' : `Card Deck: ${date.toDateString()}`}
+      <Typography
+        contentEditable={!deck.parctice}
+        variant="h5"
+        onBlur={(e) => {
+          // send the new name of the deck to the electron FS
+          const newName = e.currentTarget.textContent
+
+          sendMessage(MSG_SET_DECK_NAME, {
+            newName,
+            fileName: deck.file,
+          })
+        }}
+        style={{ marginBottom: 30, marginTop: 30 }}
+      >
+        {deck.parctice ? 'Practice Mode' : deck.name}
       </Typography>
       <Grid container spacing={3}>
         <FlashCardDeck />

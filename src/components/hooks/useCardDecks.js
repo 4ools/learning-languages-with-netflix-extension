@@ -31,9 +31,10 @@ const useCardDecks = () => {
       // push the new deck to the array
       // get a name using the timestamp from the first item in the session
       const date = new Date(content[0].timeCreated) || Date.now()
+      const name = content[0].customName || date.toDateString()
 
       const newDeck = {
-        name: date.toDateString(),
+        name,
         cards: content,
         file,
       }

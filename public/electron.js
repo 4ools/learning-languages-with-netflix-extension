@@ -17,6 +17,7 @@ const MSG_SET_DARK_MODE = 'setDarkMode'
 const MSG_RATE_CARD = 'rateCard'
 const MSG_GET_PRACTICE_CARDS = 'getPracticeCards'
 const MSG_PRACTICE_CARDS = 'practiceCards'
+const MSG_SET_DECK_NAME = 'setDeckName'
 
 const store = new Store()
 
@@ -135,7 +136,7 @@ async function createWindow() {
   })
 
   if (isDev) {
-    mainWindow.webContents.toggleDevTools()
+    // mainWindow.webContents.toggleDevTools()
   }
 
   Menu.setApplicationMenu(menu)
@@ -206,6 +207,27 @@ async function createWindow() {
 
     // set the store again
     store.set(practiceDataStore, practiceData)
+  })
+
+  ipcMain.on(MSG_SET_DECK_NAME, (_, deckData) => {
+    try {
+      // get the file contents
+      const fileContentsObj = JSON.parse(
+        fs.readFileSync(path.join(dataDir, deckData.fileName))
+      )
+      // set the new name
+      fileContentsObj[0].customName = deckData.newName
+
+      // write it again
+      fs.writeFileSync(
+        path.join(dataDir, deckData.fileName),
+        JSON.stringify(fileContentsObj)
+      )
+
+      loadCards()
+    } catch (error) {
+      console.error('could not set the new deck name', error)
+    }
   })
 
   ipcMain.on(MSG_GET_PRACTICE_CARDS, () => {

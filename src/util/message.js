@@ -5,6 +5,7 @@ const MSG_SET_DARK_MODE = 'setDarkMode'
 const MSG_RATE_CARD = 'rateCard'
 const MSG_GET_PRACTICE_CARDS = 'getPracticeCards'
 const MSG_PRACTICE_CARDS = 'practiceCards'
+const MSG_SET_DECK_NAME = 'setDeckName'
 
 // send message from the client
 const sendMessage = (messageName, message) => {
@@ -32,4 +33,5 @@ export {
   MSG_RATE_CARD,
   MSG_GET_PRACTICE_CARDS,
   MSG_PRACTICE_CARDS,
+  MSG_SET_DECK_NAME,
 }
