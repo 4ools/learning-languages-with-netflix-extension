@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
-import { onMessage, sendMessage, MSG_SET_DARK_MODE } from '../../util/message'
+import { onMessage, sendMessage } from '../../util/message'
+import messageTypes from '../../util/message-types'
 
 const DARK_MODE_COOKIE = 'dark-mode'
 const DarkModeContext = React.createContext(null)
@@ -20,7 +21,7 @@ const DarkModeProvider = ({ children }) => {
     // only do this once else you will end up with multiple on events and
     // get warnings in the console from node:
     // https://www.stefanjudis.com/today-i-learned/nodejs-sends-warnings-when-you-add-too-many-listeners-to-an-event-emitter/
-    onMessage(MSG_SET_DARK_MODE, (_, mode) => {
+    onMessage(messageTypes.MSG_SET_DARK_MODE, (_, mode) => {
       if (mode !== undefined) {
         setDarkMode(mode)
       }
@@ -34,7 +35,7 @@ const DarkModeProvider = ({ children }) => {
     }
     setDarkMode(newValue)
     setCookie(DARK_MODE_COOKIE, newValue)
-    sendMessage(MSG_SET_DARK_MODE, newValue)
+    sendMessage(messageTypes.MSG_SET_DARK_MODE, newValue)
   }
 
   return (

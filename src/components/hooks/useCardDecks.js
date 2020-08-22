@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, useContext } from 'react'
-import { onMessage, MSG_FLASH_CARD_FILES } from '../../util/message'
+import { onMessage } from '../../util/message'
+import messageTypes from '../../util/message-types'
 import { CurrentDeckContext } from '../CurrentDeck'
 
 const useCardDecks = () => {
@@ -50,7 +51,7 @@ const useCardDecks = () => {
       setCurrentDeck(newDeck)
     }
 
-    onMessage(MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
+    onMessage(messageTypes.MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
   }, [setCurrentDeck])
 
   return renderDecks

@@ -17,11 +17,8 @@ import useCardDecks from '../hooks/useCardDecks'
 import useNavigationStyles from './styles'
 import { CurrentDeckContext } from '../CurrentDeck'
 import { DarkModeContext } from '../Theme/DarkModeContext'
-import {
-  sendMessage,
-  MSG_REMOVE_FILE,
-  MSG_GET_PRACTICE_CARDS,
-} from '../../util/message'
+import { sendMessage } from '../../util/message'
+import messageTypes from '../../util/message-types'
 
 const Navigation = () => {
   // this hook gives us all the files in the FS that have decks
@@ -75,7 +72,7 @@ const Navigation = () => {
               selected={selectedItem === '-1'}
               onClick={() => {
                 setSelectedItem('-1')
-                sendMessage(MSG_GET_PRACTICE_CARDS)
+                sendMessage(messageTypes.MSG_GET_PRACTICE_CARDS)
               }}
             >
               <ListItemIcon>
@@ -124,7 +121,7 @@ const Navigation = () => {
                         // this means you are now not looking at a deck "default state"
                         currentDeckContext.setCurrentDeck(null)
                       }
-                      sendMessage(MSG_REMOVE_FILE, deck.file)
+                      sendMessage(messageTypes.MSG_REMOVE_FILE, deck.file)
                     }
                   }}
                 />

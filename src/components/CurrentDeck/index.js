@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { onMessage, MSG_PRACTICE_CARDS } from '../../util/message'
+import { onMessage } from '../../util/message'
+import messageTypes from '../../util/message-types'
 
 const CurrentDeckContext = React.createContext(null)
 
@@ -8,7 +9,7 @@ const CurrentDeckProvider = ({ children }) => {
 
   // when we get some practice cards update what cards we are looking at
   useEffect(() => {
-    onMessage(MSG_PRACTICE_CARDS, (_, cards) => {
+    onMessage(messageTypes.MSG_PRACTICE_CARDS, (_, cards) => {
       setCurrentDeck({ ...cards, parctice: true })
     })
   }, [])

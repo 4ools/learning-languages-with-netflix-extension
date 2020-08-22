@@ -6,7 +6,8 @@ import { CurrentDeckContext } from '../CurrentDeck'
 import { ReactComponent as Tree } from '../../svgs/tree.svg'
 import { ReactComponent as Winner } from '../../svgs/winner.svg'
 import EmptyState from '../EmptyState'
-import { sendMessage, MSG_SET_DECK_NAME } from '../../util/message'
+import { sendMessage } from '../../util/message'
+import messageTypes from '../../util/message-types'
 
 const FlashCardPage = () => {
   const { deck } = useContext(CurrentDeckContext)
@@ -42,7 +43,7 @@ const FlashCardPage = () => {
           // send the new name of the deck to the electron FS
           const newName = e.currentTarget.textContent
 
-          sendMessage(MSG_SET_DECK_NAME, {
+          sendMessage(messageTypes.MSG_SET_DECK_NAME, {
             newName,
             fileName: deck.file,
           })

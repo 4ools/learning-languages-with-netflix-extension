@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import FlashCard from '../FlashCard'
 import Grid from '@material-ui/core/Grid'
-import { sendMessage, MSG_RATE_CARD } from '../../util/message'
+import { sendMessage } from '../../util/message'
+import messageTypes from '../../util/message-types'
 import { CurrentDeckContext } from '../CurrentDeck'
 
 const FlashCardDeck = () => {
@@ -14,7 +15,7 @@ const FlashCardDeck = () => {
         <FlashCard
           item={item}
           onRate={(rating) => {
-            sendMessage(MSG_RATE_CARD, {
+            sendMessage(messageTypes.MSG_RATE_CARD, {
               item,
               rating,
               deckName: deck.file,
