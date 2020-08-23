@@ -5,7 +5,7 @@ const openFile = require('./open-file')
 const reloadWindow = require('./reload-window')
 
 const menu = (mainWindow) => {
-  Menu.buildFromTemplate([
+  return Menu.buildFromTemplate([
     ...(isMac
       ? [
           {
