@@ -5,7 +5,7 @@
     "name": "Gareth Fuller",
     "email": "gareth126@gmail.com"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "main": "public/electron.js",
   "dependencies": {
@@ -38,7 +38,7 @@
     "react-eject": "react-scripts eject",
     "electron-start": "wait-on http://localhost:3000 && electron .",
     "package": "electron-builder --mac --publish never",
-    "package-deploy": "electron-builder --mac --publish always",
+    "package-deploy": "electron-builder --mac --win --publish always",
     "run-dev": "concurrently -n react-server,electron-app -c blue,green \"yarn react-start\" \"yarn electron-start\"",
     "clean": "rm -rf build && rm -rf dist",
     "build-and-package": "yarn clean && yarn react-build && yarn package",
