@@ -5,6 +5,7 @@ const fs = require('fs')
 const dataDir = require('../data-path')
 const loadCards = require('../load-cards')
 const practiceDataStore = require('../practice-store')
+const openFile = require('../open-file')
 
 const Store = require('electron-store')
 const store = new Store()
@@ -51,6 +52,10 @@ const init = (mainWindow) => {
     } catch (error) {
       console.error('could not set the new deck name', error)
     }
+  })
+
+  ipcMain.on(messageType.MSG_UPLOAD_DECK, () => {
+    openFile(mainWindow)
   })
 }
 

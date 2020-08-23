@@ -8,6 +8,7 @@ import Navigation from '../Navigation'
 import { CurrentDeckProvider } from '../CurrentDeck'
 import { DarkModeProvider } from '../Theme/DarkModeContext'
 import { AllDecksProvider } from '../AllDecks'
+import FloatingActionButton from '../FloatingActionButton'
 
 const Layout = ({ children }) => {
   const classes = useLayoutStyles()
@@ -23,6 +24,7 @@ const Layout = ({ children }) => {
                 <Toolbar />
                 {children}
               </Container>
+              <FloatingActionButton />
             </AllDecksProvider>
           </CurrentDeckProvider>
         </Theme>
