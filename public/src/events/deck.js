@@ -47,7 +47,7 @@ const init = (mainWindow) => {
         JSON.stringify(fileContentsObj)
       )
 
-      loadCards(mainWindow)
+      // loadCards(mainWindow)
     } catch (error) {
       console.error('could not set the new deck name', error)
     }

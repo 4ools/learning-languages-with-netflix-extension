@@ -66,7 +66,7 @@ async function createWindow() {
   })
 
   if (isDev) {
-    // mainWindow.webContents.toggleDevTools()
+    mainWindow.webContents.toggleDevTools()
   }
 
   Menu.setApplicationMenu(menu(mainWindow))

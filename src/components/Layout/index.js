@@ -7,6 +7,7 @@ import Theme from '../Theme'
 import Navigation from '../Navigation'
 import { CurrentDeckProvider } from '../CurrentDeck'
 import { DarkModeProvider } from '../Theme/DarkModeContext'
+import { AllDecksProvider } from '../AllDecks'
 
 const Layout = ({ children }) => {
   const classes = useLayoutStyles()
@@ -16,11 +17,13 @@ const Layout = ({ children }) => {
       <DarkModeProvider>
         <Theme>
           <CurrentDeckProvider>
-            <Navigation />
-            <Container maxwidth="sm" style={{ height: 'calc(100% - 64px)' }}>
-              <Toolbar />
-              {children}
-            </Container>
+            <AllDecksProvider>
+              <Navigation />
+              <Container maxwidth="sm" style={{ height: 'calc(100% - 64px)' }}>
+                <Toolbar />
+                {children}
+              </Container>
+            </AllDecksProvider>
           </CurrentDeckProvider>
         </Theme>
       </DarkModeProvider>

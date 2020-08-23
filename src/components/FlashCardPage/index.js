@@ -8,9 +8,11 @@ import { ReactComponent as Winner } from '../../svgs/winner.svg'
 import EmptyState from '../EmptyState'
 import { sendMessage } from '../../util/message'
 import messageTypes from '../../util/message-types'
+import { AllDecksContext } from '../AllDecks'
 
 const FlashCardPage = () => {
-  const { deck } = useContext(CurrentDeckContext)
+  const { deck, setCurrentDeck } = useContext(CurrentDeckContext)
+  const { allDecks, setAllDecks } = useContext(AllDecksContext)
 
   // there is no need to render anything unless a deck has been
   // chosen
@@ -47,6 +49,20 @@ const FlashCardPage = () => {
             newName,
             fileName: deck.file,
           })
+
+          // update the file name in context so we do not have to reload all the cards again
+          deck.customName = newName
+          setCurrentDeck({ ...deck })
+
+          // update the "all decks" context which is used in places like the navigation
+          setAllDecks(
+            allDecks.map((deckItem) => {
+              if (deck.file === deckItem.file) {
+                deckItem.name = newName
+              }
+              return deckItem
+            })
+          )
         }}
         style={{ marginBottom: 30, marginTop: 30 }}
       >

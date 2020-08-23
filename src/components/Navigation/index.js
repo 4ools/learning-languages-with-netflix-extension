@@ -13,18 +13,17 @@ import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
 import DeleteIcon from '@material-ui/icons/Delete'
 import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
-import useCardDecks from '../hooks/useCardDecks'
 import useNavigationStyles from './styles'
 import { CurrentDeckContext } from '../CurrentDeck'
+import { AllDecksContext } from '../AllDecks'
 import { DarkModeContext } from '../Theme/DarkModeContext'
 import { sendMessage } from '../../util/message'
 import messageTypes from '../../util/message-types'
 
 const Navigation = () => {
-  // this hook gives us all the files in the FS that have decks
-  const decks = useCardDecks()
   const classes = useNavigationStyles()
   const currentDeckContext = useContext(CurrentDeckContext)
+  const { allDecks } = useContext(AllDecksContext)
   const { darkMode, setDarkMode } = useContext(DarkModeContext)
   const [selectedItem, setSelectedItem] = useState(null)
 
@@ -89,7 +88,7 @@ const Navigation = () => {
           </List>
           <Divider />
           <List disablePadding={true}>
-            {decks.map((deck, index) => (
+            {allDecks.map((deck, index) => (
               <ListItem
                 selected={selectedItem === index}
                 button
