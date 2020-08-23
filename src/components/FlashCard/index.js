@@ -4,8 +4,10 @@ import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
 import useFlashCardStyles from './sytles'
 import Rate from '../Rate'
-import { Typography, Box } from '@material-ui/core'
+import { Typography, Box, CardHeader } from '@material-ui/core'
 import { useSpring, animated as a } from 'react-spring'
+import IconButton from '@material-ui/core/IconButton'
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 
 const highlightedContext = (item) => {
   return item.subtitleContext.subs.map((contextLine) => {
@@ -20,17 +22,40 @@ const highlightedContext = (item) => {
   })
 }
 
+const synth = window.speechSynthesis
+let voices
+
+// we need to wait till the voices are ready in my head
+window.speechSynthesis.onvoiceschanged = () => {
+  voices = synth.getVoices()
+}
+
+const getVoice = (lang) => {
+  return voices.filter((v) => v.lang.split('-')[0] === lang)[0]
+}
+
 const FlashCard = ({ item, onRate }) => {
   const [shown, setShown] = useState(false)
   const flashCardClassed = useFlashCardStyles({ shown })
 
-  const { word, wordDefinition } = item
+  const { word, wordDefinition, language } = item
 
   const { transform, opacity } = useSpring({
     opacity: shown ? 1 : 0,
     transform: `perspective(600px) rotateX(${shown ? 180 : 0}deg)`,
     config: { mass: 7, tension: 1000, friction: 100 },
   })
+
+  const playText = () => {
+    const voice = getVoice(language)
+    if (!voice) {
+      return
+    }
+    var utterance = new SpeechSynthesisUtterance(word)
+    utterance.text = word
+    utterance.voice = voice
+    synth.speak(utterance)
+  }
 
   return (
     <div
@@ -45,12 +70,16 @@ const FlashCard = ({ item, onRate }) => {
         }}
       >
         <Card className={flashCardClassed.root}>
+          <CardHeader
+            action={
+              <IconButton onClick={() => playText()} aria-label="play">
+                <RecordVoiceOverIcon />
+              </IconButton>
+            }
+            title={word}
+            subheader={wordDefinition}
+          />
           <CardContent className={flashCardClassed.content}>
-            <Typography variant="h6" style={{ marginBottom: '20px' }}>
-              {word}
-              {' = '}
-              {wordDefinition}
-            </Typography>
             <Typography variant="body2">{highlightedContext(item)}</Typography>
           </CardContent>
 
