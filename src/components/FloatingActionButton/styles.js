@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles'
 const useFabStyles = makeStyles((theme) => ({
   root: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing(2),
     left: theme.spacing(2),
     zIndex: 9999,
