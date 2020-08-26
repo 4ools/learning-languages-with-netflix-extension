@@ -70,6 +70,9 @@ const useFlashCardStyles = makeStyles((theme) => ({
         ? theme.palette.success.main
         : theme.palette.primary.main,
   },
+  whiteText: {
+    color: theme.palette.common.white,
+  },
 }))
 
 export default useFlashCardStyles

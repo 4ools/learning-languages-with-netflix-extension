@@ -36,6 +36,9 @@ const init = (mainWindow) => {
           if (Number(cardName) === Number(item.timeCreated)) {
             practiceData[deckName][cardName].lastPractice = Date.now()
             practiceData[deckName][cardName].rating = rating
+
+            // save the rating on file
+            saveRating(mainWindow, item, deckName, rating)
           }
         })
       })

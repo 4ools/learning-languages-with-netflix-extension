@@ -36,7 +36,7 @@ const getVoice = (lang) => {
 
 const FlashCard = ({ item, onRate }) => {
   const [shown, setShown] = useState(false)
-  const flashCardClassed = useFlashCardStyles({ shown })
+  const flashCardClasses = useFlashCardStyles({ shown })
 
   const { word, wordDefinition, language } = item
 
@@ -60,35 +60,40 @@ const FlashCard = ({ item, onRate }) => {
   return (
     <div
       onClick={() => setShown(true)}
-      className={flashCardClassed.flipContainer}
+      className={flashCardClasses.flipContainer}
     >
       <a.div
-        className={flashCardClassed.back}
+        className={flashCardClasses.back}
         style={{
           opacity,
           transform: transform.interpolate((t) => `${t} rotateX(180deg)`),
         }}
       >
-        <Card className={flashCardClassed.root}>
+        <Card className={flashCardClasses.root}>
           <CardHeader
             action={
               <IconButton onClick={() => playText()} aria-label="play">
-                <RecordVoiceOverIcon />
+                <RecordVoiceOverIcon className={flashCardClasses.whiteText} />
               </IconButton>
             }
+            className={flashCardClasses.whiteText}
             title={word}
-            subheader={wordDefinition}
+            subheader={
+              <span className={flashCardClasses.whiteText}>
+                {wordDefinition}
+              </span>
+            }
           />
-          <CardContent className={flashCardClassed.content}>
+          <CardContent className={flashCardClasses.content}>
             <Typography variant="body2">{highlightedContext(item)}</Typography>
           </CardContent>
 
-          <CardActions className={flashCardClassed.actionArea}>
-            <Box className={flashCardClassed.actionBox}>
+          <CardActions className={flashCardClasses.actionArea}>
+            <Box className={flashCardClasses.actionBox}>
               <Box mb={1}>
                 <Typography
                   variant="body2"
-                  className={flashCardClassed.rateText}
+                  className={flashCardClasses.rateText}
                 >
                   How easy was that?
                 </Typography>
@@ -102,11 +107,11 @@ const FlashCard = ({ item, onRate }) => {
         </Card>
       </a.div>
       <a.div
-        className={flashCardClassed.front}
+        className={flashCardClasses.front}
         style={{ opacity: opacity.interpolate((o) => 1 - o), transform }}
       >
-        <Card className={flashCardClassed.root}>
-          <Box className={flashCardClassed.emptyCard}>
+        <Card className={flashCardClasses.root}>
+          <Box className={flashCardClasses.emptyCard}>
             <Typography variant="h5">{word}</Typography>
           </Box>
         </Card>
