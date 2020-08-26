@@ -39,7 +39,6 @@ const getRating = (cards) => {
   if (!ratings.length) {
     return undefined
   }
-  console.log(JSON.stringify(ratings, null, 2))
 
   const rating = ratings.reduce((total, amount, index, array) => {
     total += amount
@@ -87,12 +86,13 @@ const AllDecksProvider = ({ children }) => {
       const newDecks = decks.current.map((deck) =>
         deck.name === updatedDeck.name ? updatedDeck : deck
       )
-      setAllDecks(newDecks)
+      decks.current = newDecks
+      setAllDecks([...decks.current])
     }
 
     onMessage(messageTypes.MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
     onMessage(messageTypes.MSG_FLASH_CARD_FILE, updateUsingFile)
-  }, [allDecks, setCurrentDeck])
+  }, [setCurrentDeck])
 
   return (
     <AllDecksContext.Provider

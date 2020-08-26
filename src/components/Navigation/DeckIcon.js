@@ -6,36 +6,24 @@ import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied'
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined'
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied'
 
-const difficultyIcons = {
-  5: {
-    icon: <SentimentVeryDissatisfiedIcon />,
-  },
-  4: {
-    icon: <SentimentDissatisfiedIcon />,
-  },
-  3: {
-    icon: <SentimentSatisfiedIcon />,
-  },
-  2: {
-    icon: <SentimentSatisfiedAltIcon />,
-  },
-  1: {
-    icon: <SentimentVerySatisfiedIcon />,
-  },
-}
-
 const DeckIcon = ({ color, rating }) => {
-  // if we did not rate any cards in the deck.
-  // we do not have a difficulty so just return the default icon
-  if (!rating) {
+  if (rating === undefined) {
     return <NewReleasesIcon color={color} />
   }
-
-  return (
-    difficultyIcons[Math.ceil(rating)]?.icon || (
-      <NewReleasesIcon color={color} />
-    )
-  )
+  switch (Math.ceil(rating)) {
+    case 5:
+      return <SentimentVeryDissatisfiedIcon color={color} />
+    case 4:
+      return <SentimentDissatisfiedIcon color={color} />
+    case 3:
+      return <SentimentSatisfiedIcon color={color} />
+    case 2:
+      return <SentimentSatisfiedAltIcon color={color} />
+    case 1:
+      return <SentimentVerySatisfiedIcon color={color} />
+    default:
+      return <NewReleasesIcon color={color} />
+  }
 }
 
 export default DeckIcon

@@ -22,6 +22,12 @@ const useNavigationStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  icon: {
+    color:
+      theme.palette.type === 'dark'
+        ? theme.palette.success.main
+        : theme.palette.primary.main,
+  },
 }))
 
 export default useNavigationStyles

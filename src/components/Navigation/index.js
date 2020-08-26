@@ -16,12 +16,13 @@ import { CurrentDeckContext } from '../CurrentDeck'
 import { AllDecksContext } from '../AllDecks'
 import { sendMessage } from '../../util/message'
 import messageTypes from '../../util/message-types'
+import { DarkModeContext } from '../Theme/DarkModeContext'
 
 const Navigation = () => {
   const classes = useNavigationStyles()
   const currentDeckContext = useContext(CurrentDeckContext)
   const { allDecks } = useContext(AllDecksContext)
-
+  const { darkMode } = useContext(DarkModeContext)
   const [selectedItem, setSelectedItem] = useState(null)
 
   return (
@@ -46,7 +47,7 @@ const Navigation = () => {
               }}
             >
               <ListItemIcon>
-                <FitnessCenterIcon color="secondary" />
+                <FitnessCenterIcon color={darkMode ? 'secondary' : 'primary'} />
               </ListItemIcon>
               <ListItemText primary="Practice" />
             </ListItem>
@@ -70,7 +71,10 @@ const Navigation = () => {
                 }}
               >
                 <ListItemIcon>
-                  <DeckIcon rating={deck.rating} color="secondary" />
+                  <DeckIcon
+                    rating={deck.rating}
+                    color={darkMode ? 'secondary' : 'primary'}
+                  />
                 </ListItemIcon>
                 <ListItemText primary={deck.name} />
 
