@@ -29,7 +29,7 @@ const FlashCardPage = () => {
   }
 
   // if you did the deck
-  if (deck.cards.length === 0) {
+  if (!deck.cards.length) {
     return (
       <EmptyState title="Woop woop 🎉" max="500px">
         <Winner width="100%" height="auto" />

@@ -6,17 +6,14 @@ import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Switch from '@material-ui/core/Switch'
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
 import DeleteIcon from '@material-ui/icons/Delete'
 import Drawer from '@material-ui/core/Drawer'
-import AppBar from '@material-ui/core/AppBar'
+import CustomAppBar from './CustomAppBar'
+import DeckIcon from './DeckIcon'
 import useNavigationStyles from './styles'
 import { CurrentDeckContext } from '../CurrentDeck'
 import { AllDecksContext } from '../AllDecks'
-import { DarkModeContext } from '../Theme/DarkModeContext'
 import { sendMessage } from '../../util/message'
 import messageTypes from '../../util/message-types'
 
@@ -24,38 +21,12 @@ const Navigation = () => {
   const classes = useNavigationStyles()
   const currentDeckContext = useContext(CurrentDeckContext)
   const { allDecks } = useContext(AllDecksContext)
-  const { darkMode, setDarkMode } = useContext(DarkModeContext)
-  const [selectedItem, setSelectedItem] = useState(null)
 
-  const currentMode = darkMode !== undefined ? Boolean(darkMode) : false
+  const [selectedItem, setSelectedItem] = useState(null)
 
   return (
     <>
-      <AppBar
-        // @TODO come back to this shit
-        color={currentMode ? 'inherit' : 'primary'}
-        position="fixed"
-        style={{ zIndex: 3000 }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap className={classes.title}>
-            LLN companion app
-          </Typography>
-          <FormControlLabel
-            control={
-              <Switch
-                color="secondary"
-                checked={currentMode}
-                onChange={(event) => {
-                  setDarkMode(event.target.checked)
-                }}
-                name="DarkMode"
-              />
-            }
-            label="Dark Mode"
-          />
-        </Toolbar>
-      </AppBar>
+      <CustomAppBar />
       <Drawer
         className={classes.drawer}
         variant="permanent"
@@ -99,7 +70,7 @@ const Navigation = () => {
                 }}
               >
                 <ListItemIcon>
-                  <CalendarTodayIcon color="secondary" />
+                  <DeckIcon rating={deck.rating} color="secondary" />
                 </ListItemIcon>
                 <ListItemText primary={deck.name} />
 

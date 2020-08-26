@@ -5,6 +5,53 @@ import { CurrentDeckContext } from '../CurrentDeck'
 
 const AllDecksContext = React.createContext(null)
 
+const getNewDeck = (fileDetails) => {
+  const { content, file } = fileDetails
+
+  // if we do not have the right file struct, just come out
+  if (!content) {
+    return
+  }
+  // push the new deck to the array
+  // get a name using the timestamp from the first item in the session
+  const date = new Date(content[0].timeCreated) || Date.now()
+  const name = content[0].customName || date.toDateString()
+
+  const rating = getRating(content)
+
+  console.log('setting the cards rating as', rating)
+
+  return {
+    name,
+    cards: content,
+    rating,
+    file,
+  }
+}
+
+// for a deck set a rating prop, based on the average of the ratings
+// for each of the cards
+const getRating = (cards) => {
+  // sum / amount is mean
+  const ratings = cards
+    .filter((card) => card.rating !== undefined)
+    .map((card) => card.rating)
+  if (!ratings.length) {
+    return undefined
+  }
+  console.log(JSON.stringify(ratings, null, 2))
+
+  const rating = ratings.reduce((total, amount, index, array) => {
+    total += amount
+    if (index === array.length - 1) {
+      return total / array.length
+    } else {
+      return total
+    }
+  })
+  return rating
+}
+
 const AllDecksProvider = ({ children }) => {
   const [allDecks, setAllDecks] = useState([])
   const decks = useRef([])
@@ -12,22 +59,7 @@ const AllDecksProvider = ({ children }) => {
 
   useEffect(() => {
     async function addDeckFor(fileDetails) {
-      const { content, file } = fileDetails
-
-      // if we do not have the right file struct, just come out
-      if (!content) {
-        return
-      }
-      // push the new deck to the array
-      // get a name using the timestamp from the first item in the session
-      const date = new Date(content[0].timeCreated) || Date.now()
-      const name = content[0].customName || date.toDateString()
-
-      const newDeck = {
-        name,
-        cards: content,
-        file,
-      }
+      const newDeck = getNewDeck(fileDetails)
 
       decks.current.push(newDeck)
 
@@ -49,7 +81,17 @@ const AllDecksProvider = ({ children }) => {
       files.forEach((file) => addDeckFor(file))
     }
 
+    // replace just the file that was updated in the context
+    function updateUsingFile(_, file) {
+      const updatedDeck = getNewDeck(file)
+      const newDecks = decks.current.map((deck) =>
+        deck.name === updatedDeck.name ? updatedDeck : deck
+      )
+      setAllDecks(newDecks)
+    }
+
     onMessage(messageTypes.MSG_FLASH_CARD_FILES, updateDecksUsingFiles)
+    onMessage(messageTypes.MSG_FLASH_CARD_FILE, updateUsingFile)
   }, [allDecks, setCurrentDeck])
 
   return (

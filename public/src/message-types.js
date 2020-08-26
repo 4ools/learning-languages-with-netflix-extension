@@ -7,9 +7,11 @@ const MSG_GET_PRACTICE_CARDS = 'getPracticeCards'
 const MSG_PRACTICE_CARDS = 'practiceCards'
 const MSG_SET_DECK_NAME = 'setDeckName'
 const MSG_UPLOAD_DECK = 'uploadDeck'
+const MSG_FLASH_CARD_FILE = 'flashCardFile'
 
 module.exports = {
   MSG_FLASH_CARD_FILES,
+  MSG_FLASH_CARD_FILE,
   MSG_REMOVE_FILE,
   MSG_SET_DARK_MODE,
   MSG_RATE_CARD,

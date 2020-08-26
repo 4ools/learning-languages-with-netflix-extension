@@ -1,5 +1,6 @@
 // define some message names that we use in the system
 const MSG_FLASH_CARD_FILES = 'flashCardFiles'
+const MSG_FLASH_CARD_FILE = 'flashCardFile'
 const MSG_REMOVE_FILE = 'removeFile'
 const MSG_SET_DARK_MODE = 'setDarkMode'
 const MSG_RATE_CARD = 'rateCard'
@@ -10,6 +11,7 @@ const MSG_UPLOAD_DECK = 'uploadDeck'
 
 export default {
   MSG_FLASH_CARD_FILES,
+  MSG_FLASH_CARD_FILE,
   MSG_REMOVE_FILE,
   MSG_SET_DARK_MODE,
   MSG_RATE_CARD,

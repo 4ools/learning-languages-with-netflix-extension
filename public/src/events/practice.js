@@ -1,6 +1,7 @@
 const messageType = require('../message-types')
 const { ipcMain } = require('electron')
 const practiceDataStore = require('../practice-store')
+const saveRating = require('../save-rating')
 
 const Store = require('electron-store')
 const store = new Store()
@@ -39,6 +40,10 @@ const init = (mainWindow) => {
         })
       })
     } else {
+      // as we have the file we will add the rating on the card in the
+      // actual file here. this makes sure it is persisted
+      saveRating(mainWindow, item, deckName, rating)
+
       // if we do not already have the deck
       if (!practiceData[deckName]) {
         practiceData[deckName] = {}
