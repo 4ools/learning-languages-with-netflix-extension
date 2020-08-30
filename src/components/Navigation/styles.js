@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles'
-const drawerWidth = 260
+const drawerWidth = 300
 const useNavigationStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,

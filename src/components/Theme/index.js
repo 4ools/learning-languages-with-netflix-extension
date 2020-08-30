@@ -21,22 +21,26 @@ const Theme = ({ children }) => {
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
           background: {
-            default: prefersDarkMode ? '#15232d' : '#efefef',
+            default: prefersDarkMode ? '#15232d' : '#fafafa',
             paper: prefersDarkMode ? '#193549' : '#fff',
           },
           primary: {
-            light: 'hsla(212, 72%, 34%, 0.30)',
-            main: '#185294',
+            light: prefersDarkMode
+              ? 'hsla(212, 72%, 34%, 0.30)'
+              : 'hsla(208, 100%, 50%, 0.30)',
+            main: prefersDarkMode ? '#185294' : '#0088ff',
           },
           secondary: {
             main: '#ff9d00',
           },
           success: {
-            light: 'hsla(212, 72%, 34%, 0.30)',
-            main: '#185294',
+            light: prefersDarkMode
+              ? 'hsla(212, 72%, 34%, 0.30)'
+              : 'hsla(208, 100%, 50%, 0.30)',
+            main: prefersDarkMode ? '#185294' : '#0088ff',
           },
           error: {
-            main: '#A22929',
+            main: prefersDarkMode ? '#ff628c' : '#A22929',
           },
           warning: {
             main: '#fb5607',
