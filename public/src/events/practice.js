@@ -86,6 +86,11 @@ const init = (mainWindow) => {
       Object.keys(practiceData[deckName]).forEach((cardName) => {
         const card = practiceData[deckName][cardName]
         weights.push({
+          // @TODO here we should check if 4 days, 10 days and so on passed
+          // then we should up the weight based on how long has passed.
+          // a card with a weight of like 4 days should have a super high prio
+          // as this is the time that they could forget about the word on the card
+          // and if it is say > 4 < 10 it gets x1 but >5 < 10 x1.1 and so on
           weight: card.rating * card.lastPractice,
           card,
         })
